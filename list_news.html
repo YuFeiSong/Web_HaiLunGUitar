@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta name="keywords" content="{$SEO['keyword']}">
+		<meta name="description" content="{$SEO['description']}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="statics/hailunguitar/css/swiper.min.css"/>
+		<script src="/statics/hailunguitar/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="statics/hailunguitar/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<!--导航-->
+		<style type="text/css">
+			*{
+				font-family: "microsoft yahei";
+			}
+			a , a:hover , a:active{
+				text-decoration: none;
+			}
+			.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{background-color: none;}
+			/*鼠标效果 禁用背景色*/
+			#nav_list li a:hover ,#nav_list li a p:hover{background: none;}
+			
+			#header_nav{
+				position: fixed;
+				z-index: 10;
+				width: 100%;
+				height: 60px;
+				border-bottom: 1px solid #FFFFFF;
+				background: rgba(246,246,246,0.98);
+				transition: all;
+				transition-duration: .3s;
+				-moz-transition-timing-function:  linear;
+			}
+			.navbar{
+				width: 100%;
+			    padding: 0 120px;
+			    margin: 0;
+			    border: none;
+			}
+			.navbar-brand{
+				padding: 0 !important;
+			}
+			#logo{
+				margin-top: 6px;					
+			}
+			#nav_list li{
+				width: 102px;
+			    height: 60px;
+    			line-height: 60px;
+    			margin-left: 15px;
+			}
+			#nav_list li a{
+				font-size: 15px;
+				color: #4a4a4a;	
+			    height: 60px;
+    			line-height: 30px;	
+			    letter-spacing: 2px;
+			}
+			#nav_list li a p{
+			    margin: 0;
+			    width: 40px;
+			    height: 22px;
+			    line-height: 22px;
+			    text-align: -webkit-center;
+			    display: inline-block;
+			    border: 1px solid #ffffff;
+			    border-radius: 10px;
+			    font-size: 16px;
+			    color: #FFFFFF;
+			}
+			#nav_list li span{
+			    line-height: 48px;
+			    height: 48px;
+			    width: 1px;
+			    border: 1px solid #ffffff;
+			    margin: 0 10px;
+			}
+			
+			.nav_item:after{
+				content: "";  
+			    width: 0;  
+			    height: 1px;  
+			    background: #f8223e;  
+			    position: absolute;  
+			    top: 100%;  
+			    left: 50%;  
+			    transition: all .3s; 
+			}
+			.nav_item:hover:after{  
+			   left: 0%;  
+			   width: 100%;  
+			}
+			 /*手机端 下拉按钮*/
+			.navbar-toggle{
+			    border: 1px solid #FFFFFF;
+			}
+			.icon-bar{
+				background: #FFFFFF;
+			}/*--手机端 下拉按钮*/
+			
+			#site{width: 100%;height: 60px; display: block;}
+			
+			/*鼠标悬停效果*/
+			.nav_a_hover{
+				color: #f9223e !important;
+			}
+			
+			/*导航 各分辨率设置*/
+			@media only screen and (min-width: 1170px) and (max-width: 1270px) {
+				.navbar{
+					padding: 0 80px;
+				}
+				#nav_list li{
+				    margin-left: 10px;
+				}
+			}
+			@media only screen and (min-width: 970px) and (max-width: 1170px) {
+				.navbar{
+					padding: 0 28px;
+				}
+				#nav_list li{
+				    margin-left: 0;
+				}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 970px) {
+				.navbar{
+					padding: 0 20px;
+				}
+				#nav_list li{
+					width: 74px;
+					margin-left: 0;
+				}
+				#nav_list li a{
+					font-size: 13px;
+					padding: 10px 0;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				#site{
+					height: 50px;
+				}
+				#header_nav{
+					height: 50px;
+					position: fixed !important;
+					background: rgba(246,246,246,0.98) !important;
+				}
+				.navbar{
+					padding: 0;
+				}
+				#logo{
+					margin-top: 3px;
+				}
+				.navbar-toggle{
+					border: 1px solid #f8223e;
+				}
+				.navbar-toggle .icon-bar{
+					background: #f8223e;
+				}
+				#navbar{
+					background: rgba(246,246,246,0.98) !important;
+				}
+				#nav_list{
+				    width: 100%;
+    				margin: 0;
+				}
+				.nav_item{
+				    width: 100% !important;
+				    margin: 0 !important;
+				    height: 50px !important;
+				    line-height: 50px !important;
+				    border-bottom: 1px solid #eeeeee;
+				}
+				.nav_item a{
+				    height: 50px !important;
+				    line-height: 32px !important;
+				    color: #4a4a4a !important;
+				}
+			}/*导航 分辨率设置*/
+			
+		</style>
+		
+		<!--资讯-->
+		<style type="text/css">
+			/*资讯*/
+			#sectionTitle{
+				margin: 100px 0 0 0;
+			}
+			
+			.sectionTitle{
+				font-size: 28px;
+				color: #5b5b5b;
+				margin: 0;
+			}
+			.sectionTitleEn{
+				font-size: 14px;
+				color: #A3A3A3;
+				margin: 0;
+			}
+			
+			
+			/*资讯列表*/
+			.newsContainer{
+				margin-top: 50px;
+			}
+			#newsContent{
+				margin: auto;
+			}
+			.newsItemContainer{
+			    padding: 40px 20px;
+			}
+			.newsLeftImg{
+			    max-width: 280px;
+			    max-height: 165px;
+			    overflow: hidden;
+			}
+			.newsLeftImg img{
+			    transition: all;
+			    transition-duration: .3s;
+			    transition-timing-function: ease;
+			    
+			    -webkit-transition: all;
+			    -webkit-transition-duration: .3s;
+			    -webkit-transition-timing-function: ease;
+			    
+			    -moz-transition: all;
+			    -moz-transition-duration: .3s;
+			    -moz-transition-timing-function: ease;
+			    
+			    -ms-transition: all;
+			    -ms-transition-duration: .3s;
+			    -ms-transition-timing-function: ease;
+			}
+			.newsLeftImg img:hover{
+				transform: scale(1.1);
+			}
+			
+			.newsDesContent {
+			    padding: 2% 0;
+			    width: 80%;
+		        overflow: hidden;
+			}
+			.newsTitle {
+			    margin: 0;
+			    color: #000000;
+			    font-size: 17px;
+			}
+			.newsDate {
+			    font-size: 11px;
+			    color: #939393;
+			    margin: 0;
+			}
+			.newsDes {
+			    margin: 25px 0;
+		        font-size: 15px;
+    			color: #7f7f7f;
+			}
+			.newsUrl{
+			    position: absolute;
+			    display: none;
+		        right: 20px;
+				top: 28%;
+			    width: 88px;
+			    height: 32px;
+			    line-height: 32px;
+			    background: #f8233e;
+			    color: #FFFFFF;
+			    border-radius: 20px;
+			}
+			.newsUrl:hover{
+				color: #FFFFFF;
+			}
+			
+			.newsItemContainer , .newsDesContent , .newsTitle , .newsDes , .newsUrl{
+				transition: all;
+			    transition-duration: .3s;
+			    transition-timing-function: ease;
+			    
+			    -webkit-transition: all;
+			    -webkit-transition-duration: .3s;
+			    -webkit-transition-timing-function: ease;
+			    
+			    -moz-transition: all;
+			    -moz-transition-duration: .3s;
+			    -moz-transition-timing-function: ease;
+			    
+			    -ms-transition: all;
+			    -ms-transition-duration: .3s;
+			    -ms-transition-timing-function: ease;
+			}
+			
+			.swiper-pagination{
+			    position: initial;
+    			margin: 66px 0 84px 0;
+			}
+			.swiper-pagination-bullet{
+				height: 34px;width: 34px;
+				line-height: 34px;
+				font-size: 21px;
+				color: #383838;
+				border-radius: 0;
+				background: #d6d6d6;
+				
+				transition: all;
+				transition-duration: .3s;
+				transition-timing-function: ease;
+				
+				-webkit-transition: all;
+				-webkit-transition-duration: .3s;
+				-webkit-transition-timing-function: ease;
+				
+				-moz-transition: all;
+				-moz-transition-duration: .3s;
+				-moz-transition-timing-function: ease;
+				
+				-ms-transition: all;
+				-ms-transition-duration: .3s;
+				-ms-transition-timing-function: ease;
+			}
+			.swiper-pagination-bullet-active{
+				color: #FFFFFF;
+				background: #F8223E;
+			}
+			
+			@media only screen and (max-width: 768px) {
+				.newsUrl{display: block !important;top: 32%;width: 60px;border-radius: 16px;}
+			}
+			
+			
+			/*--资讯*/
+		</style>
+		
+		<!--页尾-->
+		<style type="text/css">
+			/*页尾*/
+			#contact{padding: 95px 0;background: #F7F7F7;}
+			#footerTitle{margin: 0;font-size: 28px;color: #6f6f6f;}
+			#footerTitleEn{margin: 0;color: #a3a3a3;font-size: 14px;}
+			#contactContainer{margin-top: 85px;font-size: 14px;color: #7a7a7a;letter-spacing: 2px;}
+			.contactIcon{margin-right: 10px;}
+			#webInfo{background: #000000;}
+			#webInfo p{margin: 0;line-height: 30px;color: #b1b1b1;}
+			/*footer*/
+			@media only screen and (max-width: 768px) {
+				#contact{padding: 55px 0;}
+				#contactContainer{margin-top: 70px;}
+				.contactItem{margin-bottom: 30px;}
+			}
+		</style>
+		
+		<style type="text/css">
+			/*返回顶部*/
+			#goTop{display: none;position: fixed;right: 2%;bottom: 5%;width: 42px;height: 42px;font-size: 10px;text-align: -webkit-center;
+			    line-height: 42px;border: 1px solid #f0f0f0;background: #e0e0e0;color: #ffffff;
+			    
+			    transition: all;transition-duration: .3s;transition-timing-function: ease;
+    			
+    			-webkit-transition: all;-webkit-transition-duration: .3s;-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;-moz-transition-duration: .3s;-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;-ms-transition-duration: .3s;-ms-transition-timing-function: ease;
+			}
+			#goTop span{transform: scale(2,1.5);}
+			#goTop:hover{background: #F8223E;}
+		</style>
+		
+	</head>
+	<body>
+		
+		{template "content","header"}
+		
+		<!--资讯-->
+		<section id="news">
+			<div class="container">
+				<div id="sectionTitle" class="row text-center">
+					<p class="wow fadeInUp sectionTitle" data-wow-delay=".1s">音乐资讯</p>
+					<p class="wow fadeInUp sectionTitleEn" data-wow-delay=".2s">Music information</p>
+				</div>
+				<div class="swiper-container newsContainer">
+					<div id="newsContent" class="row swiper-wrapper">
+						{pc:content action="lists" catid="$catid" num="" order="ID DESC" moreinfo="1"}
+						{loop $data $r}
+							<?php $num=$n ?>
+							{if $num%3==1}
+							<div class="swiper-slide">
+							{/if}
+								<a href="{$r[url]}" title="{$r[title]}">
+									<div class="newsItem container-fluid">
+										<div class="row newsItemContainer">
+											<div class="newsLeft col-lg-4 col-md-4 col-sm-4 col-xs-4">
+												<div class="newsLeftImg">
+													<img class="" src="{$r[thumb]}"/>
+												</div>
+											</div>
+											<div class="newsRight col-lg-8 col-md-8 col-sm-8 col-xs-8">
+												<div class="newsDesContent">
+													<p class="newsTitle">{$r[title]}</p>
+													<p class="newsDate">{date('Y-m-d',$r[inputtime])}</p>
+													<p class="newsDes">{$r[description]}</p>
+												</div>
+												<a class="newsUrl text-center" href="{$r[url]}" title="{$r[title]}">MORE</a>
+											</div>
+										</div>
+									</div>
+								</a>
+							{if $num%3==0}
+							</div>
+							{/if}
+						{/loop}
+						{/pc}
+						{if $num%3>=1}
+						</div>
+						{/if}
+					</div>
+					<div class="wow fadeInUp swiper-pagination" data-wow-delay=".2s"></div>
+				</div>
+				
+			</div>
+		</section>
+		
+		
+		<!--尾巴-->
+		{template "content","footer"}
+		
+		<script type="text/javascript">
+			
+			window.onload=function () {
+				init();
+				someEventFunc();
+			}
+			
+			function init () {
+				var swiper = new Swiper('.newsContainer', {
+			        pagination: '.swiper-pagination',
+			        paginationClickable: true,
+			        paginationBulletRender: function (swiper, index, className) {
+			            return '<span class="' + className + '">' + (index + 1) + '</span>';
+			        },
+//			        autoHeight: true
+			    });
+				
+				//动画初始化
+				var wow = new WOW({
+				    boxClass: 'wow',
+				    animateClass: 'animated',
+				    offset: 10,
+				    mobile: false,
+				    live: true
+				});
+				wow.init();
+			}
+			
+			//导航栏滚动固定样式
+			window.onscroll=function () {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				
+				if (scrollTop >= 1100) {
+					$("#goTop").fadeIn(100);
+				}else{
+					$("#goTop").fadeOut(100);
+				}
+			}
+			
+			
+			function someEventFunc () {
+				
+				$(".nav_item").hover(function () {
+					$(this).find("a").addClass("nav_a_hover");
+				},function () {
+					$(this).find("a").removeClass("nav_a_hover");
+				})
+				
+				//新闻hover
+				$(".newsItemContainer").hover(function () {
+					$(this).css("background","#e7e7e7");
+					$(this).find(".newsTitle").css("color","#e42a4f");
+					$(this).find(".newsDes").css("color","#7e7e7e");
+					$(this).find(".newsDesContent").css("margin-left","35px");
+					$(this).find(".newsUrl").show();
+				},function () {
+					$(this).css("background","#FFFFFF");
+					$(this).find(".newsTitle").css("color","#000000");
+					$(this).find(".newsDes").css("color","#7f7f7f");
+					$(this).find(".newsDesContent").css("margin-left","0");
+					$(this).find(".newsUrl").hide();
+				})
+				
+				//页尾图标
+				$("#contactWeibo").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo.png");
+				})
+				
+				$("#contactQQ").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq.png");
+				})
+				
+				$("#contactWeixin").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin.png");
+				})
+				
+				//页尾 天猫图标
+				$(".footerTmallCon").hover(function () {
+					$(".footerTmall").css("animation-name","bounceIn");
+				},function () {
+					$(".footerTmall").css("animation-name","none");
+				})
+				
+				//返回顶部
+				$("#goTop").click(function () {
+					$("html ,body").animate({scrollTop:0},500);
+				})
+			}
+			
+		</script>
+	</body>
+</html>

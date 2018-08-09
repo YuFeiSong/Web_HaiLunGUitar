@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta name="keywords" content="{$SEO['keyword']}">
+		<meta name="description" content="{$SEO['description']}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="statics/hailunguitar/css/swiper.min.css"/>
+		<script src="/statics/hailunguitar/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="statics/hailunguitar/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<!--导航-->
+		<style type="text/css">
+			*{
+				font-family: "microsoft yahei";
+			}
+			a , a:hover , a:active{
+				text-decoration: none;
+			}
+			.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{background-color: none;}
+			/*鼠标效果 禁用背景色*/
+			#nav_list li a:hover ,#nav_list li a p:hover{background: none;}
+			
+			#header_nav{
+				position: fixed;
+				z-index: 10;
+				width: 100%;
+				height: 60px;
+				border-bottom: 1px solid #FFFFFF;
+				background: rgba(246,246,246,0.98);
+				transition: all;
+				transition-duration: .3s;
+				-moz-transition-timing-function:  linear;
+			}
+			.navbar{
+				width: 100%;
+			    padding: 0 120px;
+			    margin: 0;
+			    border: none;
+			}
+			.navbar-brand{
+				padding: 0 !important;
+			}
+			#logo{
+				margin-top: 6px;					
+			}
+			#nav_list li{
+				width: 102px;
+			    height: 60px;
+    			line-height: 60px;
+    			margin-left: 15px;
+			}
+			#nav_list li a{
+				font-size: 15px;
+				color: #4a4a4a;	
+			    height: 60px;
+    			line-height: 30px;	
+			    letter-spacing: 2px;
+			}
+			#nav_list li a p{
+			    margin: 0;
+			    width: 40px;
+			    height: 22px;
+			    line-height: 22px;
+			    text-align: -webkit-center;
+			    display: inline-block;
+			    border: 1px solid #ffffff;
+			    border-radius: 10px;
+			    font-size: 16px;
+			    color: #FFFFFF;
+			}
+			#nav_list li span{
+			    line-height: 48px;
+			    height: 48px;
+			    width: 1px;
+			    border: 1px solid #ffffff;
+			    margin: 0 10px;
+			}
+			
+			.nav_item:after{
+				content: "";  
+			    width: 0;  
+			    height: 1px;  
+			    background: #f8223e;  
+			    position: absolute;  
+			    top: 100%;  
+			    left: 50%;  
+			    transition: all .3s; 
+			}
+			.nav_item:hover:after{  
+			   left: 0%;  
+			   width: 100%;  
+			}
+			 /*手机端 下拉按钮*/
+			.navbar-toggle{
+			    border: 1px solid #FFFFFF;
+			}
+			.icon-bar{
+				background: #FFFFFF;
+			}/*--手机端 下拉按钮*/
+			
+			#site{width: 100%;height: 60px; display: block;}
+			
+			/*鼠标悬停效果*/
+			.nav_a_hover{
+				color: #f9223e !important;
+			}
+			
+			/*导航 各分辨率设置*/
+			@media only screen and (min-width: 1170px) and (max-width: 1270px) {
+				.navbar{
+					padding: 0 80px;
+				}
+				#nav_list li{
+				    margin-left: 10px;
+				}
+			}
+			@media only screen and (min-width: 970px) and (max-width: 1170px) {
+				.navbar{
+					padding: 0 28px;
+				}
+				#nav_list li{
+				    margin-left: 0;
+				}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 970px) {
+				.navbar{
+					padding: 0 20px;
+				}
+				#nav_list li{
+					width: 74px;
+					margin-left: 0;
+				}
+				#nav_list li a{
+					font-size: 13px;
+					padding: 10px 0;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				#site{
+					height: 50px;
+				}
+				#header_nav{
+					height: 50px;
+					position: fixed !important;
+					background: rgba(246,246,246,0.98) !important;
+				}
+				.navbar{
+					padding: 0;
+				}
+				#logo{
+					margin-top: 3px;
+				}
+				.navbar-toggle{
+					border: 1px solid #f8223e;
+				}
+				.navbar-toggle .icon-bar{
+					background: #f8223e;
+				}
+				#navbar{
+					background: rgba(246,246,246,0.98) !important;
+				}
+				#nav_list{
+				    width: 100%;
+    				margin: 0;
+				}
+				.nav_item{
+				    width: 100% !important;
+				    margin: 0 !important;
+				    height: 50px !important;
+				    line-height: 50px !important;
+				    border-bottom: 1px solid #eeeeee;
+				}
+				.nav_item a{
+				    height: 50px !important;
+				    line-height: 32px !important;
+				    color: #4a4a4a !important;
+				}
+			}/*导航 分辨率设置*/
+			
+		</style>
+		
+		<!--产品-->
+		<style type="text/css">
+			/*产品*/
+			#sectionTitle{
+				margin: 100px 0 0 0;
+			}
+			
+			.sectionTitle{
+				font-size: 28px;
+				color: #5b5b5b;
+				margin: 0;
+			}
+			.sectionTitleEn{
+				font-size: 14px;
+				color: #A3A3A3;
+				margin: 0;
+			}
+			
+			#sectionNav{
+			    margin: 36px 0 56px 0;
+			}
+			#sectionNavList{
+			    margin: 0;
+			    padding: 0;
+			    list-style: none;
+			}
+			.sectionNavListItem{
+		        position: relative;
+			    display: inline-block;
+			    width: 100px;
+			    padding: 0;
+			    cursor: pointer;
+			    color: #6F6F6F;
+			}
+			.sectionNavListItemActive{
+				color: #F8223E;
+			}
+			.sectionNavListItem:hover{
+				color: #F8223E;
+			}
+			.sectionNavListItem:before{
+			    content: "/";
+			    right: -5px;
+			    color: #A3A3A3;
+			    position: absolute;
+			}
+			.sectionNavListItem:last-child:before{
+				display: none;
+			}
+			
+			/**/
+			.sectionNavContainer{
+				background: #F7F7F7;
+			    margin-bottom: 100px;
+			}
+			.topImageImg{
+				width: 100%;
+			}
+			.belowContent{
+				min-height: 400px;
+				padding: 43px 10%;
+			}
+			.start{
+				padding: 0 12%;
+			}
+			.start p{
+			    margin: 0;
+			    display: block;
+			    width: 100px;
+			    height: 25px;
+			    line-height: 25px;
+			    color: #ffffff;
+			    background: #f8223e;
+			    font-size: 18px;
+			}
+			.cutLine{
+			    height: 1px;
+    			background: #aeaeae;
+			}
+			.belowContentContainer{
+				padding: 0 12%;
+			}
+			.belowContentLeft{
+			    border-right: 1px solid #AEAEAE;
+    			padding-top: 60px;
+			}
+			.belowContenLeftTitle {
+			    font-size: 28px;
+			    color: #000000;
+			}
+			.belowContenLeftTitle {
+			    font-size: 28px;
+			    color: #000000;
+			    margin: 0 0 30px 0;
+			}
+			.belowContenLeftTitle span{
+				margin-left: 20px;
+			}
+			.belowContentLeftCHN {
+			    font-size: 15px;
+			    color: #505050;
+			    margin: 0 0 50px 0;
+			}
+			.belowContentLeftEN {
+			    font-size: 10px;
+			    color: #757372;
+			    margin: 0 0 30px 0;
+			}
+			.centerCircle{
+			    position: absolute;
+			    width: 21px;
+			    height: 21px;
+			    background: #E0E0E0;
+			    border-radius: 50%;
+			    right: -11px;
+			    top: 65px;
+			}
+			.centerCircle div{
+			    position: absolute;
+			    width: 13px;
+			    height: 13px;
+			    background: #AEAEAE;
+			    border-radius: 50%;
+			    right: 4px;
+			    top: 4px;
+			}
+			.belowContentRight{
+				padding-top: 90px;
+			    padding-left: 30px;
+			}
+			.imgBack , .historyImgCon{
+				position: absolute;
+			    background: #FFFFFF;
+			    padding: 5px;
+			    border: 1px solid #c5c5c5;
+			}
+			.imgBack img , .historyImgCon img{
+				width: 100%;
+			}
+			.imgBack{
+    			transform: rotate(5deg);
+    			-webkit-transform: rotate(5deg);
+    			-moz-transform: rotate(5deg);
+    			-ms-transform: rotate(5deg);
+			}
+			.historyImgCon{
+			    box-shadow: 4px 4px 10px #cccccc;
+			}
+			
+			/*技术工艺*/
+			#sectionTwoBelow{
+				padding: 68px 10% 0 10%;
+			}
+			.sectionTwoBelowTitle{
+			    font-size: 28px;
+			    color: #000000;
+			    margin: 68px 0 30px 0;
+			    letter-spacing: 2px;
+			}
+			.sectionTwoBelowItem{
+			    padding: 0 8% 0 11%;
+			}
+			.textItem{
+			    margin-bottom: 80px;				
+			}
+			.textItemTitle{
+				display: inline-block;
+			    padding: 0 14px;
+		        margin-bottom: 8px;
+			    height: 28px;
+			    line-height: 28px;
+			    font-size: 15px;
+			    background: #f8233e;
+			    color: #FFFFFF;
+			}
+			.textItemContent{
+				font-size: 14px;
+			    color: #505050;
+			    margin-top: 15px;
+			}
+			.rightImg{
+			    padding: 40% 0;
+			}
+			.rightImg img{
+				max-width: 100%;
+			    margin-bottom: 80px;
+			}
+			
+			.textItem02{
+				display: inline-block;
+				margin-right: 40px;
+				margin-bottom: 80px;
+			}
+			.textItem02 .textItemTitle{
+				width: 100%;
+			}
+			.rightImg02{
+				padding: 0;
+			}
+			.rightImg02 img {
+				margin-bottom: 0;
+				max-width: 100%;
+			}
+			
+			.textItem03{
+				margin-bottom: 80px;
+			}
+			.rightImg03 img{
+				margin-bottom: 50px;
+				max-width: 100%;
+			}
+			
+			.rightImg04{
+			    margin: 55px 0;
+			}
+			.rightImg04 span{
+				margin: 0 5px;
+			}
+			.rightImg04 img{
+				max-height: 105px;
+			}
+			.rightImg04 #mobileShow{display: none;}
+			#mobileShow span{
+				display: inline-block;width: 30%;text-align: -webkit-center;text-align: center;text-align: -moz-center;
+			}
+			#mobileShow span:after{
+			    position: absolute;
+			    content: "→";
+			    margin-left: 10px;
+			}
+			#mobileShow span:last-child:after{display: none !important;}
+			
+			.rightImg05{
+			    margin: 80px 0 160px 0;
+			}
+			.rightImg05 img{
+			    width: 30%;
+    			margin-right: 1%;
+			}
+			
+			@media only screen and (max-width: 768px) {
+				.belowContentLeft{border-right: none;}
+				.belowContenLeftTitle span{display: none;}
+				.centerCircle{display: none;}
+				.imgBack{display: none;}
+				.imgBack, .historyImgCon{position: static;}
+				.belowContentRight{padding-top: 0;padding-left: 15px;}
+				
+				/*技术*/
+				.rightImg{padding: 0;}
+				.rightImg img{max-width: 49%;}
+				
+				.rightImg03 img {max-width: 49%;}
+				
+				.rightImg04 span {display: none;}
+				.rightImg04 img {max-width: 33%;}
+				#mobileShow{display: block !important;}
+				
+			}
+			
+		</style>
+		
+		<!--页尾-->
+		<style type="text/css">
+			/*页尾*/
+			#contact{padding: 95px 0;background: #F7F7F7;}
+			#footerTitle{margin: 0;font-size: 28px;color: #6f6f6f;}
+			#footerTitleEn{margin: 0;color: #a3a3a3;font-size: 14px;}
+			#contactContainer{margin-top: 85px;font-size: 14px;color: #7a7a7a;letter-spacing: 2px;}
+			.contactIcon{margin-right: 10px;}
+			#webInfo{background: #000000;}
+			#webInfo p{margin: 0;line-height: 30px;color: #b1b1b1;}
+			/*footer*/
+			@media only screen and (max-width: 768px) {
+				#contact{padding: 55px 0;}
+				#contactContainer{margin-top: 70px;}
+				.contactItem{margin-bottom: 30px;}
+			}
+		</style>
+		
+		<style type="text/css">
+			/*返回顶部*/
+			#goTop{display: none;position: fixed;right: 2%;bottom: 5%;width: 42px;height: 42px;font-size: 10px;text-align: -webkit-center;
+			    line-height: 42px;border: 1px solid #f0f0f0;background: #e0e0e0;color: #ffffff;
+			    
+			    transition: all;transition-duration: .3s;transition-timing-function: ease;
+    			
+    			-webkit-transition: all;-webkit-transition-duration: .3s;-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;-moz-transition-duration: .3s;-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;-ms-transition-duration: .3s;-ms-transition-timing-function: ease;
+			}
+			#goTop span{transform: scale(2,1.5);}
+			#goTop:hover{background: #F8223E;}
+		</style>
+		
+	</head>
+	<body>
+		
+		{template "content","header"}
+		
+		<!--关于我们-->
+		<section id="product">
+			<div class="container">
+				<div id="sectionTitle" class="row text-center">
+					<p class="wow fadeInUp sectionTitle" data-wow-delay=".1s">关于我们</p>
+					<p class="wow fadeInUp sectionTitleEn" data-wow-delay=".2s">About us</p>
+				</div>
+				<?php $catidid = $catid ?>
+				<div id="sectionNav" class="row text-center">
+					<ul id="sectionNavList">
+						<li class="wow fadeInUp sectionNavListItem" catid="10" data-wow-delay=".2s">品牌历程</li>
+						<li class="wow fadeInUp sectionNavListItem" catid="11" data-wow-delay=".2s">材料工艺</li>
+					</ul>
+				</div>
+				<div class="wow fadeInUp row sectionNavContainer" catid="10">
+					<div id="sectionOneTop" class="wow fadeInUp topImage">
+						<img class="topImageImg" src="/statics/hailunguitar/imgs/aboutbanner.jpg"/>
+					</div>
+					<div id="sectionOneBelow" class="wow fadeInUp belowContent">
+						<div class="start">
+							<p class="text-center">START</p>
+						</div>
+						<div class="cutLine"></div>
+						{pc:content action="lists" catid="10" num="" order="ID ASC" moreinfo="1"}
+						{loop $data $r}
+						<div class="row belowContentContainer">
+							<div class="belowContentLeft col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<p class="belowContenLeftTitle">{$r[title]}<span>→</span></p>
+								<div class="centerCircle"><div></div></div>
+								<p class="belowContentLeftCHN">{$r[desCN]}</p>
+								<p class="belowContentLeftEN">{$r[desEN]}</p>
+							</div>
+							<div class="belowContentRight col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="imgBack">
+									<img src="/statics/hailunguitar/imgs/history_grey.jpg"/>
+								</div>
+								<div class="historyImgCon">
+									<img class="historyImg" src="{$r[thumb]}"/>
+								</div>
+							</div>
+						</div>
+						{/loop}
+						{/pc}
+					</div>
+				</div>
+				
+				<div class="wow fadeInUp row sectionNavContainer" catid="11">
+					<div id="sectionTwoTop" class="wow fadeInUp topImage">
+						<img class="topImageImg" src="/statics/hailunguitar/imgs/aboutbanner.jpg"/>
+					</div>
+					<div id="sectionTwoBelow" class="wow fadeInUp belowContent">
+						<div class="cutLine"></div>
+						<div class="">
+							<p class="sectionTwoBelowTitle">01——采用特殊木材作为背侧板</p>
+							<div class="row sectionTwoBelowItem">
+								<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+									<div class="textItem">
+										<span class="textItemTitle">北美-西提卡云杉</span>
+										<p class="textItemContent">西提卡云杉面板，散孔材，油性大，制作工艺难于玫瑰木之上密度小但质地非常坚硬<br />所以反应速度快爆发力极限大，动态宽广，同时寿命长，加之产量足，物美价廉</p>
+									</div>
+									<div class="textItem">
+										<span class="textItemTitle">印度-玫瑰木</span>
+										<p class="textItemContent">纹理直结构细，生长纹路均匀；木材重，强度高；极耐腐。  几乎无瑕  疵，使琴体导音更稳定<br />
+										音色甜美、圆润、高音明亮通透、低音沉稳、延音长声部  清晰不浑  浊，指弹首选<br />
+										高音低音的落差很大，音色表现更加丰富。适合扫弦<br />
+										质软，弹性好，对低频响应尤其大，中高频动态好，柔和  富有变化</p>
+									</div>
+									<div class="textItem">
+										<span class="textItemTitle">巴西-花梨木</span>
+										<p class="textItemContent">中国自古以来都有使用高端木材作为民族乐器材料的习俗<br />
+										在春秋战国时期即出现檀类木材，应用于古琴、琵琶、二胡等民族乐器上,<br />
+										在提高音质的同时还能加固琴体的作用<br />
+										所以海伦吉他基于民族乐器之上，注入了巴西-花梨木，<br />
+										作为吉他的材料。其属性、音质都不亚于玫瑰木。<br />
+										而其制作工艺之难度都高于玫瑰木之上。</p>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<div class="rightImg">
+										<img src="/statics/hailunguitar/imgs/tec1.png"/>
+										<img src="/statics/hailunguitar/imgs/tec2.png"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="">
+							<p class="sectionTwoBelowTitle">02——反复调试设计适合亚洲人的手感</p>
+							<div class="row sectionTwoBelowItem">
+								<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+									<div class="textItem02">
+										<span class="textItemTitle">1 品</span>
+										<p class="textItemContent">1弦距0.5-0.6<br />6弦距0.7-0.8</p>
+									</div>
+									<div class="textItem02">
+										<span class="textItemTitle">12 品</span>
+										<p class="textItemContent">1弦距2.4<br />6弦距2.8</p>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<div class="rightImg02">
+										<img src="/statics/hailunguitar/imgs/tec3.png"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="">
+							<p class="sectionTwoBelowTitle">03——采用西提卡云杉板</p>
+							<div class="row sectionTwoBelowItem">
+								<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+									<div class="textItem03">
+										<span class="textItemTitle">低音：深沉厚实</span>
+										<span class="textItemTitle">中音：饱满有力</span>
+										<span class="textItemTitle">高音：纯净明亮</span>
+										<p class="textItemContent">密度小但质地非常坚硬，反应速度快<br />
+										爆发力极限大，具有良好的硬度<br />
+										极佳的传导性，且音色温暖。</p>
+									</div>
+									<div class="textItem03">
+										<span class="textItemTitle">琴颈上口宽度43mm</span>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<div class="rightImg03">
+										<img src="/statics/hailunguitar/imgs/tec4.png"/>
+										<img src="/statics/hailunguitar/imgs/tec5.png"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="">
+							<p class="sectionTwoBelowTitle">04——采用彩贝镶边</p>
+							<div class="row sectionTwoBelowItem">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="textItem04">
+										<span class="textItemTitle">中国·海伦位于宁波北仑</span>
+										<p class="textItemContent">海洋资源丰富，从而采用色彩漂亮的鲍鱼贝<br />
+										应用于海伦吉他上</p>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="rightImg04">
+										<img src="/statics/hailunguitar/imgs/tec6.png"/>
+										<span>鲍鱼贝精心打磨  →</span>
+										<img src="/statics/hailunguitar/imgs/tec7.png"/>
+										<span>压制铺平  →</span>
+										<img src="/statics/hailunguitar/imgs/tec8.png"/>
+										<span>边饰彩贝镶边</span>
+										
+										<p id="mobileShow"><span>鲍鱼贝精心打磨</span><span>压制铺平</span><span>边饰彩贝镶边</span></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="">
+							<p class="sectionTwoBelowTitle">05——手工打造匠心独具</p>
+							<div class="row sectionTwoBelowItem">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="textItem05">
+										<span class="textItemTitle">一把用传承与匠心打练而成的吉他</span>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="rightImg05">
+										<img src="/statics/hailunguitar/imgs/tec9.jpg"/>
+										<img src="/statics/hailunguitar/imgs/tec10.jpg"/>
+										<img src="/statics/hailunguitar/imgs/tec11.jpg"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+		</section>
+		
+		
+		<!--尾巴-->
+		{template "content","footer"}
+		
+		<script type="text/javascript">
+			
+			window.onload=function () {
+				init();
+				someEventFunc();
+			}
+			
+			function init () {
+				//动画初始化
+				var wow = new WOW({
+				    boxClass: 'wow',
+				    animateClass: 'animated',
+				    offset: 10,
+				    mobile: false,
+				    live: true
+				});
+				wow.init();
+			}
+			
+			//导航栏滚动固定样式
+			window.onscroll=function () {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				
+				if (scrollTop >= 1100) {
+					$("#goTop").fadeIn(100);
+				}else{
+					$("#goTop").fadeOut(100);
+				}
+			}
+			
+			
+			function someEventFunc () {
+				
+				$(".nav_item").hover(function () {
+					$(this).find("a").addClass("nav_a_hover");
+				},function () {
+					$(this).find("a").removeClass("nav_a_hover");
+				})
+				
+				//切换系列
+				$(".sectionNavListItem").click(function () {
+					var catid = $(this).attr("catid");
+					selectSerItem(catid);
+				})
+				//默认
+				selectSerItem($(".sectionNavListItem").first().attr("catid"));
+				
+				//页尾图标
+				$("#contactWeibo").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo.png");
+				})
+				
+				$("#contactQQ").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq.png");
+				})
+				
+				$("#contactWeixin").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin.png");
+				})
+				
+				//页尾 天猫图标
+				$(".footerTmallCon").hover(function () {
+					$(".footerTmall").css("animation-name","bounceIn");
+				},function () {
+					$(".footerTmall").css("animation-name","none");
+				})
+				
+				//返回顶部
+				$("#goTop").click(function () {
+					$("html ,body").animate({scrollTop:0},500);
+				})
+			}
+			
+			//选择系列
+			function selectSerItem (catid) {
+				//
+				$(".sectionNavListItem[catid="+catid+"]").addClass("sectionNavListItemActive").siblings(".sectionNavListItem").removeClass("sectionNavListItemActive");
+				$(".sectionNavContainer[catid="+catid+"]").show().siblings(".sectionNavContainer").hide();
+			}
+			
+		</script>
+	</body>
+</html>

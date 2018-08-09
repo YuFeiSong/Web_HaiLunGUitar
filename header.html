@@ -1,0 +1,28 @@
+<header id="header_nav">
+	<nav class="navbar" id="nav">
+		<div id="nav_contant" class="container-fluid">
+			<div class="navbar-header">
+		        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		       	</button>
+	        	<a class="navbar-brand" href="/">
+	        		<img id="logo" src="/statics/hailunguitar/imgs/logo.png"/>
+	        	</a>
+	        </div>
+	        <div id="navbar" class="collapse navbar-collapse">
+	          	<ul id="nav_list" class="nav navbar-nav pull-right">
+	          		<li class="nav_item"><a class="text-center" href="/">首页</a></li>
+					{pc:content action="category" catid="0" num="" siteid="$siteid" order="listorder ASC"}
+					{loop $data $r}
+					<li class="nav_item"><a class="text-center" href="{$r[url]}">{$r[catname]}</a></li>
+					{/loop}
+					{/pc}
+	          	</ul>
+	        </div>
+		</div>
+	</nav>
+</header>
+<section id="site"></section>

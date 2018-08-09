@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta name="keywords" content="{$SEO['keyword']}">
+		<meta name="description" content="{$SEO['description']}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="statics/hailunguitar/css/swiper.min.css"/>
+		<script src="/statics/hailunguitar/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="statics/hailunguitar/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<!--导航-->
+		<style type="text/css">
+			*{
+				font-family: "microsoft yahei";
+			}
+			a , a:hover , a:active{
+				text-decoration: none;
+			}
+			.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{background-color: none;}
+			/*鼠标效果 禁用背景色*/
+			#nav_list li a:hover ,#nav_list li a p:hover{background: none;}
+			
+			#header_nav{
+				position: fixed;
+				z-index: 10;
+				width: 100%;
+				height: 60px;
+				border-bottom: 1px solid #FFFFFF;
+				background: rgba(246,246,246,0.98);
+				transition: all;
+				transition-duration: .3s;
+				-moz-transition-timing-function:  linear;
+			}
+			.navbar{
+				width: 100%;
+			    padding: 0 120px;
+			    margin: 0;
+			    border: none;
+			}
+			.navbar-brand{
+				padding: 0 !important;
+			}
+			#logo{
+				margin-top: 6px;					
+			}
+			#nav_list li{
+				width: 102px;
+			    height: 60px;
+    			line-height: 60px;
+    			margin-left: 15px;
+			}
+			#nav_list li a{
+				font-size: 15px;
+				color: #4a4a4a;	
+			    height: 60px;
+    			line-height: 30px;	
+			    letter-spacing: 2px;
+			}
+			#nav_list li a p{
+			    margin: 0;
+			    width: 40px;
+			    height: 22px;
+			    line-height: 22px;
+			    text-align: -webkit-center;
+			    display: inline-block;
+			    border: 1px solid #ffffff;
+			    border-radius: 10px;
+			    font-size: 16px;
+			    color: #FFFFFF;
+			}
+			#nav_list li span{
+			    line-height: 48px;
+			    height: 48px;
+			    width: 1px;
+			    border: 1px solid #ffffff;
+			    margin: 0 10px;
+			}
+			
+			.nav_item:after{
+				content: "";  
+			    width: 0;  
+			    height: 1px;  
+			    background: #f8223e;  
+			    position: absolute;  
+			    top: 100%;  
+			    left: 50%;  
+			    transition: all .3s; 
+			}
+			.nav_item:hover:after{  
+			   left: 0%;  
+			   width: 100%;  
+			}
+			 /*手机端 下拉按钮*/
+			.navbar-toggle{
+			    border: 1px solid #FFFFFF;
+			}
+			.icon-bar{
+				background: #FFFFFF;
+			}/*--手机端 下拉按钮*/
+			
+			#site{width: 100%;height: 60px; display: block;}
+			
+			/*鼠标悬停效果*/
+			.nav_a_hover{
+				color: #f9223e !important;
+			}
+			
+			/*导航 各分辨率设置*/
+			@media only screen and (min-width: 1170px) and (max-width: 1270px) {
+				.navbar{
+					padding: 0 80px;
+				}
+				#nav_list li{
+				    margin-left: 10px;
+				}
+			}
+			@media only screen and (min-width: 970px) and (max-width: 1170px) {
+				.navbar{
+					padding: 0 28px;
+				}
+				#nav_list li{
+				    margin-left: 0;
+				}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 970px) {
+				.navbar{
+					padding: 0 20px;
+				}
+				#nav_list li{
+					width: 74px;
+					margin-left: 0;
+				}
+				#nav_list li a{
+					font-size: 13px;
+					padding: 10px 0;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				#site{
+					height: 50px;
+				}
+				#header_nav{
+					height: 50px;
+					position: fixed !important;
+					background: rgba(246,246,246,0.98) !important;
+				}
+				.navbar{
+					padding: 0;
+				}
+				#logo{
+					margin-top: 3px;
+				}
+				.navbar-toggle{
+					border: 1px solid #f8223e;
+				}
+				.navbar-toggle .icon-bar{
+					background: #f8223e;
+				}
+				#navbar{
+					background: rgba(246,246,246,0.98) !important;
+				}
+				#nav_list{
+				    width: 100%;
+    				margin: 0;
+				}
+				.nav_item{
+				    width: 100% !important;
+				    margin: 0 !important;
+				    height: 50px !important;
+				    line-height: 50px !important;
+				    border-bottom: 1px solid #eeeeee;
+				}
+				.nav_item a{
+				    height: 50px !important;
+				    line-height: 32px !important;
+				    color: #4a4a4a !important;
+				}
+			}/*导航 分辨率设置*/
+			
+		</style>
+		
+		<!--产品-->
+		<style type="text/css">
+			/*产品*/
+			#productTitle{
+				margin: 100px 0 0 0;
+			}
+			
+			.sectionTitle{
+				font-size: 28px;
+				color: #5b5b5b;
+				margin: 0;
+			}
+			.sectionTitleEn{
+				font-size: 14px;
+				color: #A3A3A3;
+				margin: 0;
+			}
+			
+			#productSer{
+			    margin: 36px 0 56px 0;
+			}
+			#productSerList{
+			    margin: 0;
+			    padding: 0;
+			    list-style: none;
+			}
+			.productSerListItem{
+		        position: relative;
+			    display: inline-block;
+			    width: 100px;
+			    padding: 0;
+			    cursor: pointer;
+			    color: #6F6F6F;
+			}
+			.productSerListItemActive{
+				color: #F8223E;
+			}
+			.productSerListItem:hover{
+				color: #F8223E;
+			}
+			.productSerListItem:before{
+			    content: "/";
+			    right: -5px;
+			    color: #A3A3A3;
+			    position: absolute;
+			}
+			.productSerListItem:last-child:before{
+				display: none;
+			}
+			
+			/*产品列表*/
+			.productSerContent{
+				margin: auto;
+			}
+			
+			.swiper-pagination{
+			    position: initial;
+    			margin: 66px 0 84px 0;
+			}
+			.swiper-pagination-bullet{
+				height: 34px;width: 34px;
+				line-height: 34px;
+				font-size: 21px;
+				color: #383838;
+				border-radius: 0;
+				background: #d6d6d6;
+				
+				transition: all;
+				transition-duration: .3s;
+				transition-timing-function: ease;
+				
+				-webkit-transition: all;
+				-webkit-transition-duration: .3s;
+				-webkit-transition-timing-function: ease;
+				
+				-moz-transition: all;
+				-moz-transition-duration: .3s;
+				-moz-transition-timing-function: ease;
+				
+				-ms-transition: all;
+				-ms-transition-duration: .3s;
+				-ms-transition-timing-function: ease;
+			}
+			.swiper-pagination-bullet-active{
+				color: #FFFFFF;
+				background: #F8223E;
+			}
+			
+			
+			.productItemContainer{
+				margin-bottom: 18px;
+			    padding-left: 9px;
+    			padding-right: 9px;
+			}
+			.productItem{
+				position: relative;
+				background: #F7F7F7;
+			    overflow: hidden;
+    			padding: 40px 0;
+			}
+			.productItem img{
+			    position: relative;
+    			top: 0px;
+    			transition: all;
+    			transition-duration: .5s;
+    			transition-timing-function: ease;
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .5s;
+    			-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .5s;
+    			-moz-transition-timing-function: ease;
+			}
+			.productDes{
+		        position: absolute;
+			    bottom: -90px;
+			    left: 18px;
+			    right: 18px;
+			    padding: 16px 18px;
+			    background: #fd2844;
+			    
+			    transition: all;
+    			transition-duration: .3s;
+    			transition-delay: .1s;
+    			transition-timing-function: ease;
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .3s;
+    			-webkit-transition-delay: .1s;
+    			-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .3s;
+    			-moz-transition-delay: .1s;
+    			-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .3s;
+    			-ms-transition-delay: .1s;
+    			-ms-transition-timing-function: ease;
+			    
+			}
+			.productDesLine{
+			    position: absolute;
+			    background: #FFFFFF;
+			    height: 1px;
+			    width: 35px;
+			    right: 0;
+			    bottom: -60px;
+			    
+			    transition: all;
+    			transition-duration: .3s;
+    			transition-delay: .2s;
+    			transition-timing-function: ease;
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .3s;
+    			-webkit-transition-delay: .2s;
+    			-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .3s;
+    			-moz-transition-delay: .2s;
+    			-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .3s;
+    			-ms-transition-delay: .2s;
+    			-ms-transition-timing-function: ease;
+			}
+			
+			.productSerName{
+				color: #FFFFFF;
+				cursor: pointer;
+			    padding-left: 6px;
+			    font-weight: 300;
+			    font-size: 16px;
+			    margin: 0;
+			}
+			.productShowDetail , .productShowDetail:hover{
+				color: #FFFFFF;
+				text-decoration: none;
+			    font-weight: 300;
+    			font-size: 12px;
+    			padding-left: 6px;
+			}
+			
+			@media only screen and (max-width: 768px) {
+				/*产品*/
+				.productItem img{top: -40px !important;}
+				.productDes{bottom: 18px !important;}
+				.productDesLine{bottom: 75px !important;}
+			}
+			/*--产品*/
+		</style>
+		
+		<!--页尾-->
+		<style type="text/css">
+			/*页尾*/
+			#contact{padding: 95px 0;background: #F7F7F7;}
+			#footerTitle{margin: 0;font-size: 28px;color: #6f6f6f;}
+			#footerTitleEn{margin: 0;color: #a3a3a3;font-size: 14px;}
+			#contactContainer{margin-top: 85px;font-size: 14px;color: #7a7a7a;letter-spacing: 2px;}
+			.contactIcon{margin-right: 10px;}
+			#webInfo{background: #000000;}
+			#webInfo p{margin: 0;line-height: 30px;color: #b1b1b1;}
+			/*footer*/
+			@media only screen and (max-width: 768px) {
+				#contact{padding: 55px 0;}
+				#contactContainer{margin-top: 70px;}
+				.contactItem{margin-bottom: 30px;}
+			}
+		</style>
+		
+		<style type="text/css">
+			/*返回顶部*/
+			#goTop{display: none;position: fixed;right: 2%;bottom: 5%;width: 42px;height: 42px;font-size: 10px;text-align: -webkit-center;
+			    line-height: 42px;border: 1px solid #f0f0f0;background: #e0e0e0;color: #ffffff;
+			    
+			    transition: all;transition-duration: .3s;transition-timing-function: ease;
+    			
+    			-webkit-transition: all;-webkit-transition-duration: .3s;-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;-moz-transition-duration: .3s;-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;-ms-transition-duration: .3s;-ms-transition-timing-function: ease;
+			}
+			#goTop span{transform: scale(2,1.5);}
+			#goTop:hover{background: #F8223E;}
+		</style>
+		
+	</head>
+	<body>
+		
+		{template "content","header"}
+		
+		<!--产品-->
+		<section id="product">
+			<div class="container">
+				<div id="productTitle" class="row text-center">
+					<p class="wow fadeInUp sectionTitle" data-wow-delay=".1s">产品中心</p>
+					<p class="wow fadeInUp sectionTitleEn" data-wow-delay=".2s">Music Product</p>
+				</div>
+				<?php $catidid = $catid ?>
+				<div id="productSer" class="row text-center">
+					<ul id="productSerList">
+						<li class="wow fadeInUp productSerListItem" catid="11111" data-wow-delay=".15s">全部产品</li>
+						{pc:content action="category" catid="$catidid" num="" order="ID DESC"}
+						{loop $data $r}
+						<li class="wow fadeInUp productSerListItem" catid="{$r[catid]}" data-wow-delay=".2s">{$r[catname]}</li>
+						{/loop}
+						{/pc}
+					</ul>
+				</div>
+				<div class="swiper-container productSerContainer" catid="11111">
+					<div id="productContent" class="row productSerContent swiper-wrapper">
+						{pc:content action="lists" catid="$catid" num="" order="ID ASC" moreinfo="1"}
+						{loop $data $r}
+							<?php $num=$n ?>
+							{if $n%6==1}
+							<div class="swiper-slide">
+							{/if}
+								<a href="{$r[url]}" title="{$r[title]}">
+									<div class="wow fadeInUp productItemContainer col-lg-4 col-md-4 col-sm-4 col-xs-12" data-wow-delay=".1s">
+										<div class="productItem">
+											<img src="{$r[thumb]}" class="wow productImg img-responsive"/>
+											<div class="productDes">
+												<p class="productSerName">{$r[title]}</p>
+												<a class="productShowDetail" href="{$r[url]}" >查看详情</a>
+											</div>
+											<div class="productDesLine"></div>
+										</div>
+									</div>
+								</a>
+							{if $n%6==0}
+							</div>
+							{/if}
+						{/loop}
+						{/pc}
+							{if $num%6>=1}
+							</div>
+							{/if}
+					</div>
+					<div class="wow fadeInUp swiper-pagination" data-wow-delay=".2s"></div>
+				</div>
+				
+				{pc:content action="category" catid="$catidid" num="" order="ID DESC"}
+				{loop $data $r}
+				<div class="swiper-container productSerContainer" catid="{$r[catid]}">
+					<div id="productContent" class="row productSerContent swiper-wrapper">
+						<?php $id=$r['catid'] ?>
+						{pc:content action="lists" catid="$id" num="" order="ID ASC" return="data2" moreinfo="1"}
+						{loop $data2 $v}
+							<?php $num1=$n ?>
+							{if $n%6==1}
+							<div class="swiper-slide">
+							{/if}
+							<a href="{$v[url]}" title="{$v[title]}">
+								<div class="wow fadeInUp productItemContainer col-lg-4 col-md-4 col-sm-4 col-xs-12" data-wow-delay=".1s">
+									<div class="productItem">
+										<img src="{$v[thumb]}" class="wow productImg img-responsive"/>
+										<div class="productDes">
+											<p class="productSerName">{$v[title]}</p>
+											<a class="productShowDetail" href="{$v[url]}" >查看详情</a>
+										</div>
+										<div class="productDesLine"></div>
+									</div>
+								</div>
+							</a>
+							{if $n%6==0}
+							</div>
+							{/if}
+						{/loop}
+						{/pc}
+							{if $num1%6>=1}
+							</div>
+							{/if}
+					</div>
+					<div class="wow fadeInUp swiper-pagination" data-wow-delay=".2s"></div>
+				</div>
+				{/loop}
+				{/pc}
+				
+			</div>
+		</section>
+		
+		
+		<!--尾巴-->
+		{template "content","footer"}
+		
+		<script type="text/javascript">
+			
+			window.onload=function () {
+				init();
+				someEventFunc();
+			}
+			
+			function init () {
+				var swiper = new Swiper('.productSerContainer', {
+			        pagination: '.swiper-pagination',
+			        paginationClickable: true,
+			        paginationBulletRender: function (swiper, index, className) {
+			            return '<span class="' + className + '">' + (index + 1) + '</span>';
+			        }
+			    });
+				
+				//动画初始化
+				var wow = new WOW({
+				    boxClass: 'wow',
+				    animateClass: 'animated',
+				    offset: 10,
+				    mobile: false,
+				    live: true
+				});
+				wow.init();
+			}
+			
+			//导航栏滚动固定样式
+			window.onscroll=function () {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				
+				if (scrollTop >= 1100) {
+					$("#goTop").fadeIn(100);
+				}else{
+					$("#goTop").fadeOut(100);
+				}
+			}
+			
+			
+			function someEventFunc () {
+				
+				$(".nav_item").hover(function () {
+					$(this).find("a").addClass("nav_a_hover");
+				},function () {
+					$(this).find("a").removeClass("nav_a_hover");
+				})
+				
+				
+				//产品hover效果
+				$(".productItem").hover(function () {
+					$(this).find(".productImg").css("top","-40px");
+					$(this).find(".productDes").css("bottom","18px");
+					$(this).find(".productDesLine").css("bottom","75px");
+				},function () {
+					$(this).find(".productDes").css("bottom","-90px");
+					$(this).find(".productDesLine").css("bottom","-60px");
+					$(this).find(".productImg").css("top","0");
+				})
+				
+				//切换系列
+				$(".productSerListItem").click(function () {
+					var catid = $(this).attr("catid");
+					selectSerItem(catid);
+				})
+				//默认
+				selectSerItem($(".productSerListItem").first().attr("catid"));
+				
+				//页尾图标
+				$("#contactWeibo").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo.png");
+				})
+				
+				$("#contactQQ").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq.png");
+				})
+				
+				$("#contactWeixin").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin.png");
+				})
+				
+				//页尾 天猫图标
+				$(".footerTmallCon").hover(function () {
+					$(".footerTmall").css("animation-name","bounceIn");
+				},function () {
+					$(".footerTmall").css("animation-name","none");
+				})
+				
+				//返回顶部
+				$("#goTop").click(function () {
+					$("html ,body").animate({scrollTop:0},500);
+				})
+			}
+			
+			//选择系列
+			function selectSerItem (catid) {
+				$(".productSerListItem[catid="+catid+"]").addClass("productSerListItemActive").siblings(".productSerListItem").removeClass("productSerListItemActive");
+				$(".productSerContainer[catid="+catid+"]").show().siblings(".productSerContainer").hide();
+			}
+			
+		</script>
+	</body>
+</html>

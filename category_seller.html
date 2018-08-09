@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta name="keywords" content="{$SEO['keyword']}">
+		<meta name="description" content="{$SEO['description']}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="statics/hailunguitar/css/swiper.min.css"/>
+		<script src="/statics/hailunguitar/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="statics/hailunguitar/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<!--导航-->
+		<style type="text/css">
+			*{
+				font-family: "microsoft yahei";
+			}
+			a , a:hover , a:active{
+				text-decoration: none;
+			}
+			.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{background-color: none;}
+			/*鼠标效果 禁用背景色*/
+			#nav_list li a:hover ,#nav_list li a p:hover{background: none;}
+			
+			#header_nav{
+				position: fixed;
+				z-index: 10;
+				width: 100%;
+				height: 60px;
+				border-bottom: 1px solid #FFFFFF;
+				background: rgba(246,246,246,0.98);
+				transition: all;
+				transition-duration: .3s;
+				-moz-transition-timing-function:  linear;
+			}
+			.navbar{
+				width: 100%;
+			    padding: 0 120px;
+			    margin: 0;
+			    border: none;
+			}
+			.navbar-brand{
+				padding: 0 !important;
+			}
+			#logo{
+				margin-top: 6px;					
+			}
+			#nav_list li{
+				width: 102px;
+			    height: 60px;
+    			line-height: 60px;
+    			margin-left: 15px;
+			}
+			#nav_list li a{
+				font-size: 15px;
+				color: #4a4a4a;	
+			    height: 60px;
+    			line-height: 30px;	
+			    letter-spacing: 2px;
+			}
+			#nav_list li a p{
+			    margin: 0;
+			    width: 40px;
+			    height: 22px;
+			    line-height: 22px;
+			    text-align: -webkit-center;
+			    display: inline-block;
+			    border: 1px solid #ffffff;
+			    border-radius: 10px;
+			    font-size: 16px;
+			    color: #FFFFFF;
+			}
+			#nav_list li span{
+			    line-height: 48px;
+			    height: 48px;
+			    width: 1px;
+			    border: 1px solid #ffffff;
+			    margin: 0 10px;
+			}
+			
+			.nav_item:after{
+				content: "";  
+			    width: 0;  
+			    height: 1px;  
+			    background: #f8223e;  
+			    position: absolute;  
+			    top: 100%;  
+			    left: 50%;  
+			    transition: all .3s; 
+			}
+			.nav_item:hover:after{  
+			   left: 0%;  
+			   width: 100%;  
+			}
+			 /*手机端 下拉按钮*/
+			.navbar-toggle{
+			    border: 1px solid #FFFFFF;
+			}
+			.icon-bar{
+				background: #FFFFFF;
+			}/*--手机端 下拉按钮*/
+			
+			#site{width: 100%;height: 60px; display: block;}
+			
+			/*鼠标悬停效果*/
+			.nav_a_hover{
+				color: #f9223e !important;
+			}
+			
+			/*导航 各分辨率设置*/
+			@media only screen and (min-width: 1170px) and (max-width: 1270px) {
+				.navbar{
+					padding: 0 80px;
+				}
+				#nav_list li{
+				    margin-left: 10px;
+				}
+			}
+			@media only screen and (min-width: 970px) and (max-width: 1170px) {
+				.navbar{
+					padding: 0 28px;
+				}
+				#nav_list li{
+				    margin-left: 0;
+				}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 970px) {
+				.navbar{
+					padding: 0 20px;
+				}
+				#nav_list li{
+					width: 74px;
+					margin-left: 0;
+				}
+				#nav_list li a{
+					font-size: 13px;
+					padding: 10px 0;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				#site{
+					height: 50px;
+				}
+				#header_nav{
+					height: 50px;
+					position: fixed !important;
+					background: rgba(246,246,246,0.98) !important;
+				}
+				.navbar{
+					padding: 0;
+				}
+				#logo{
+					margin-top: 3px;
+				}
+				.navbar-toggle{
+					border: 1px solid #f8223e;
+				}
+				.navbar-toggle .icon-bar{
+					background: #f8223e;
+				}
+				#navbar{
+					background: rgba(246,246,246,0.98) !important;
+				}
+				#nav_list{
+				    width: 100%;
+    				margin: 0;
+				}
+				.nav_item{
+				    width: 100% !important;
+				    margin: 0 !important;
+				    height: 50px !important;
+				    line-height: 50px !important;
+				    border-bottom: 1px solid #eeeeee;
+				}
+				.nav_item a{
+				    height: 50px !important;
+				    line-height: 32px !important;
+				    color: #4a4a4a !important;
+				}
+			}/*导航 分辨率设置*/
+			
+		</style>
+		
+		<!--经销商-->
+		<style type="text/css">
+			/*经销商*/
+			#sectionTitle{
+				margin: 100px 0 0 0;
+			}
+			
+			.sectionTitle{
+				font-size: 28px;
+				color: #5b5b5b;
+				margin: 0;
+			}
+			.sectionTitleEn{
+				font-size: 14px;
+				color: #A3A3A3;
+				margin: 0;
+			}
+			
+			#sectionNav{
+			    margin: 36px 0 56px 0;
+			}
+			#sectionNavList{
+			    margin: 0;
+			    padding: 0;
+			    list-style: none;
+			}
+			.sectionNavListItem{
+		        position: relative;
+			    display: inline-block;
+			    width: 100px;
+			    padding: 0;
+			    cursor: pointer;
+			    color: #6F6F6F;
+			}
+			.sectionNavListItemActive{
+				color: #F8223E;
+			}
+			.sectionNavListItem:hover{
+				color: #F8223E;
+			}
+			.sectionNavListItem:before{
+			    content: "/";
+			    right: -5px;
+			    color: #A3A3A3;
+			    position: absolute;
+			}
+			.sectionNavListItem:last-child:before{
+				display: none;
+			}
+			.sectionNavContainer{
+			    margin-bottom: 100px;
+		        min-height: 200px;
+			}
+			
+			/*线下*/
+			.cityFirstLetter {
+			    height: 30px;
+			    font-size: 16px;
+			    padding: 5px 30px;
+			    background: #F3F3F3;
+			    margin: 10px 0;
+			}
+			.cityList {
+			    padding-top: 10px;
+			    padding-bottom: 10px;
+			}
+			.cityNameItemText{
+				font-size: 16px;
+				color: #000000;
+				cursor: pointer;
+			}
+			.cityNameItemText:hover{
+				color: #F8223E;
+			}
+			.cityNameItemContent {
+			    padding: 15px 0;
+			    border-bottom: 1px solid #f3f3f3;
+			}
+			
+			/*城市经销商显示*/
+			.citySeller{
+				display: none;
+			}
+			.goBackCityList {
+			    padding: 10px;
+			    cursor: pointer;
+			    color: #747474;
+			}
+			.goBackCityList span:hover{
+				color: #F8223E;
+			}
+			.currentCityName {
+			    min-height: 31px;
+			    font-size: 16px;
+			    padding: 5px 30px;
+			    background: #f3f3f3;
+			    line-height: 21px;
+			}
+			.citySellerList {
+			    padding-top: 10px;
+			    padding-bottom: 10px;
+			}
+			.citySellerItemContent {
+		        padding: 15px 0;
+			    border-bottom: 1px solid #f3f3f3;
+			}
+			.citySellerName {
+		        margin-bottom: 20px;
+			    font-size: 18px;
+			}
+			.citySellerAddr , .citySellerTel {
+			    margin: 10px 0;
+		        color: #727272;
+			}
+			.citySellerAddr:hover{
+				color: #000000;
+			}
+			.citySellerAddr span{
+				color: #a34500;
+				margin-right: 4px;
+			}
+			.citySellerTel span{
+				color: #586f00;
+				margin-right: 4px;
+			}
+			
+			#noSeller {
+			    height: 200px;
+			    line-height: 200px;
+			    font-size: 16px;
+			}
+			
+		</style>
+		
+		<!--页尾-->
+		<style type="text/css">
+			/*页尾*/
+			#contact{padding: 95px 0;background: #F7F7F7;}
+			#footerTitle{margin: 0;font-size: 28px;color: #6f6f6f;}
+			#footerTitleEn{margin: 0;color: #a3a3a3;font-size: 14px;}
+			#contactContainer{margin-top: 85px;font-size: 14px;color: #7a7a7a;letter-spacing: 2px;}
+			.contactIcon{margin-right: 10px;}
+			#webInfo{background: #000000;}
+			#webInfo p{margin: 0;line-height: 30px;color: #b1b1b1;}
+			/*footer*/
+			@media only screen and (max-width: 768px) {
+				#contact{padding: 55px 0;}
+				#contactContainer{margin-top: 70px;}
+				.contactItem{margin-bottom: 30px;}
+			}
+		</style>
+		
+		<style type="text/css">
+			/*返回顶部*/
+			#goTop{display: none;position: fixed;right: 2%;bottom: 5%;width: 42px;height: 42px;font-size: 10px;text-align: -webkit-center;
+			    line-height: 42px;border: 1px solid #f0f0f0;background: #e0e0e0;color: #ffffff;
+			    
+			    transition: all;transition-duration: .3s;transition-timing-function: ease;
+    			
+    			-webkit-transition: all;-webkit-transition-duration: .3s;-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;-moz-transition-duration: .3s;-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;-ms-transition-duration: .3s;-ms-transition-timing-function: ease;
+			}
+			#goTop span{transform: scale(2,1.5);}
+			#goTop:hover{background: #F8223E;}
+		</style>
+		
+	</head>
+	<body>
+		
+		{template "content","header"}
+		
+		<!--关于我们-->
+		<section id="product">
+			<div class="container">
+				<div id="sectionTitle" class="row text-center">
+					<p class="wow fadeInUp sectionTitle" data-wow-delay=".1s">店铺</p>
+					<p class="wow fadeInUp sectionTitleEn" data-wow-delay=".2s">Shop</p>
+				</div>
+				<?php $catidid = $catid ?>
+				<div id="sectionNav" class="row text-center">
+					<ul id="sectionNavList">
+						<li class="wow fadeInUp sectionNavListItem" catid="12" data-wow-delay=".2s">线下店铺</li>
+						<li class="wow fadeInUp sectionNavListItem" catid="13" data-wow-delay=".2s">线上店铺</li>
+					</ul>
+				</div>
+				<div class="wow fadeInUp row sectionNavContainer" catid="12">
+					<div id="cityName" class="">
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">A</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="14">安徽</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="35">澳门</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">B</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="2">北京</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">C</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="5">重庆</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">F</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="15">福建</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">G</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="29">甘肃</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="21">广东</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="22">广西</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="25">贵州</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">H</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="23">海南</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="6">河北</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="18">河南</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="11">黑龙江</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="19">湖北</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="20">湖南</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">J</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="10">吉林</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="12">江苏</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="16">江西</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">L</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="9">辽宁</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">N</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="8">内蒙古</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="31">宁夏</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">Q</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="30">青海</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">S</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="17">山东</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="7">山西</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="28">陕西</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="3">上海</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="24">四川</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">T</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="33">台湾</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="4">天津</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">X</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="27">西藏</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="34">香港</span></div></div>
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="32">新疆</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">Y</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="26">云南</span></div></div>
+							</div>
+						</div>
+						<div class="offLineSellerCityItem col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="cityFirstLetter">Z</div>
+							<div class="cityList container-fluid">
+								<div class="cityNameItem col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="cityNameItemContent"><span class="cityNameItemText" indexId="13">浙江</span></div></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="citySeller">
+						<div class="citySellerContent col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="goBackCityList text-right">
+								<span onclick="goBackCityList()">返回城市列表</span>
+							</div>
+							<div class="currentCityName text-center">XXX</div>
+							<div id="citySellerList" class="citySellerList container-fluid">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="wow fadeInUp row sectionNavContainer" catid="13">
+					<div id="tMall" class="wow fadeInUp row" data-wow-delay="0.1s">
+						<a target="_blank" href="https://www.tmall.com/" title="点击访问海伦吉他天猫店">
+							<div class="footerTmallCon">
+								<img src="statics/hailunguitar/imgs/tmall.png" class="wow footerTmall img-responsive center-block"/>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		
+		<!--尾巴-->
+		{template "content","footer"}
+		
+		<script type="text/javascript">
+			
+			window.onload=function () {
+				init();
+				someEventFunc();
+			}
+			
+			function init () {
+				//动画初始化
+				var wow = new WOW({
+				    boxClass: 'wow',
+				    animateClass: 'animated',
+				    offset: 10,
+				    mobile: false,
+				    live: true
+				});
+				wow.init();
+			}
+			
+			//导航栏滚动固定样式
+			window.onscroll=function () {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				
+				if (scrollTop >= 1100) {
+					$("#goTop").fadeIn(100);
+				}else{
+					$("#goTop").fadeOut(100);
+				}
+			}
+			
+			
+			function someEventFunc () {
+				
+				$(".nav_item").hover(function () {
+					$(this).find("a").addClass("nav_a_hover");
+				},function () {
+					$(this).find("a").removeClass("nav_a_hover");
+				})
+				
+				//切换系列
+				$(".sectionNavListItem").click(function () {
+					var catid = $(this).attr("catid");
+					selectSerItem(catid);
+				})
+				//默认
+				selectSerItem($(".sectionNavListItem").first().attr("catid"));
+				
+				//点击获取经销商
+				$(".cityNameItemText").click(function () {
+					var id = $(this).attr("indexId");
+					var name = $(this).text();
+					getSellerInfo(id,name);
+				})
+				
+				//页尾图标
+				$("#contactWeibo").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo.png");
+				})
+				
+				$("#contactQQ").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq.png");
+				})
+				
+				$("#contactWeixin").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin.png");
+				})
+				
+				//页尾 天猫图标
+				$(".footerTmallCon").hover(function () {
+					$(".footerTmall").css("animation-name","bounceIn");
+				},function () {
+					$(".footerTmall").css("animation-name","none");
+				})
+				
+				//返回顶部
+				$("#goTop").click(function () {
+					$("html ,body").animate({scrollTop:0},500);
+				})
+			}
+			
+			//选择系列
+			function selectSerItem (catid) {
+				//
+				$(".sectionNavListItem[catid="+catid+"]").addClass("sectionNavListItemActive").siblings(".sectionNavListItem").removeClass("sectionNavListItemActive");
+				$(".sectionNavContainer[catid="+catid+"]").show().siblings(".sectionNavContainer").hide();
+			}
+			
+			function getSellerInfo (cityId,cityName) {
+				$.ajax({
+					type:"post",
+					url:"/seller.php",
+					async:true,
+					data:{
+						province:cityId
+					},
+					success:function (data) {
+						data = JSON.parse(data);
+						if (data[0] != null) {
+							setSellerInfo(data,cityName);
+						} else{
+							noneSeller(cityName);
+						}
+					}
+				});
+			}
+			
+			function setSellerInfo (data,cityName) {
+				$("#citySellerList").html("");
+				for (var i = 0; i < data.length; i++) {
+					document.getElementById("citySellerList").innerHTML+= "<div class='citySellerItem col-lg-4 col-md-4 col-sm-6 col-xs-12'><div class='citySellerItemContent'><p class='citySellerName'>"+data[i]['title']+"</p><a href='http://api.map.baidu.com/geocoder?address="+data[i]['addr']+"&output=html'><p class='citySellerAddr'><span class='glyphicon glyphicon-map-marker'></span>"+data[i]['addr']+"</p></a><p class='citySellerTel'><span class='glyphicon glyphicon-earphone'></span>"+data[i]['tel']+"</p></div></div>";
+				}
+				$(".currentCityName").html(cityName);
+				$("#cityName").hide();
+				$(".citySeller").show();
+			}
+			
+			function noneSeller (cityName) {
+				$("#citySellerList").html("<div id='noSeller' class='text-center'>该地区暂无经销商!</div>");
+				$(".currentCityName").html(cityName);
+				$("#cityName").hide();
+				$(".citySeller").show();
+			}
+			
+			function goBackCityList () {
+				$(".citySeller").hide();
+				$("#cityName").show();
+				$(".currentCityName").html("");
+				$("#citySellerList").html("");
+			}
+			
+		</script>
+	</body>
+</html>

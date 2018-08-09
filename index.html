@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta name="keywords" content="{$SEO['keyword']}">
+		<meta name="description" content="{$SEO['description']}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/animate.min.css"/>
+		<script src="/statics/hailunguitar/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<style type="text/css">
+			*{
+				font-family: "microsoft yahei";
+			}
+			a , a:hover , a:active{
+				text-decoration: none;
+			}
+			
+			.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+				background-color: none;
+			}
+			#header_nav{
+				position: absolute;
+				z-index: 10;
+				width: 100%;
+				height: 82px;
+				border-bottom: 1px solid #FFFFFF;
+				background: rgba(0,0,0,0.08);
+				transition: all;
+				transition-duration: .3s;
+				-moz-transition-timing-function:  linear;
+			}
+			.navbar{
+				width: 100%;
+			    padding: 0 120px;
+			    margin: 0;
+			    border: none;
+			}
+			.navbar-brand{
+				padding: 0 !important;
+			}
+			#logo{
+				margin-top: 18px;					
+			}
+			#nav_list li{
+				width: 102px;
+			    height: 82px;
+    			line-height: 82px;
+    			margin-left: 15px;
+			}
+			#nav_list li a{
+				font-size: 15px;
+				color: #FFFFFF;	
+			    height: 82px;
+    			line-height: 52px;	
+			    letter-spacing: 2px;
+			}
+			#nav_list li a p{
+			    margin: 0;
+			    width: 40px;
+			    height: 22px;
+			    line-height: 22px;
+			    text-align: -webkit-center;
+			    display: inline-block;
+			    border: 1px solid #ffffff;
+			    border-radius: 10px;
+			    font-size: 16px;
+			    color: #FFFFFF;
+			}
+			#nav_list li span{
+			    line-height: 48px;
+			    height: 48px;
+			    width: 1px;
+			    border: 1px solid #ffffff;
+			    margin: 0 10px;
+			}
+			
+			.nav_item:after{
+				content: "";  
+			    width: 0;  
+			    height: 1px;  
+			    background: #f8223e;  
+			    position: absolute;  
+			    top: 100%;  
+			    left: 50%;  
+			    transition: all .3s; 
+			}
+			.nav_item:hover:after{  
+			   left: 0%;  
+			   width: 100%;  
+			}
+			
+			
+			 /*手机端 下拉按钮*/
+			.navbar-toggle{
+			    border: 1px solid #FFFFFF;
+			}
+			.icon-bar{
+				background: #FFFFFF;
+			}/*--手机端 下拉按钮*/
+			
+			/*鼠标效果 禁用背景色*/
+			#nav_list li a:hover ,#nav_list li a p:hover{
+				background: none;
+			}
+			
+			
+			/*下拉固定样式*/
+			.header_nav_fixed{height: 60px !important;background: rgba(246,246,246,0.98) !important;}
+			.logo_fixed{margin-top: 6px !important;}
+			.nav_item_fixed{height: 60px !important;line-height: 60px !important;}
+			.nav_item_a_fixed{height: 60px !important;line-height: 30px !important;color: #4a4a4a !important;}
+			
+			/*鼠标悬停效果*/
+			.nav_a_hover{
+				color: #f9223e !important;
+			}
+			
+			#site{display: none;}
+			
+			/*轮播*/
+			#lunbo{
+				position: relative;
+				z-index: 1;
+			}
+			.carousel-control{
+				background-image: none !important;
+			}
+			/*--轮播*/	
+			
+			
+			/*产品*/
+			#productTitle{
+				margin: 78px 0;
+			}
+			.sectionTitle{
+				font-size: 24px;
+				color: #f9223e;
+				margin: 0;
+			}
+			.sectionTitle span{
+				font-size: 14px;
+				color: #8a8989;
+				margin-left: 15px;
+			}
+			.productItemContainer{
+				margin-bottom: 18px;
+			    padding-left: 9px;
+    			padding-right: 9px;
+			}
+			.productItem{
+				position: relative;
+				background: #F7F7F7;
+			    overflow: hidden;
+    			padding: 40px 0;
+			}
+			.productItem img{
+			    position: relative;
+    			top: 0px;
+    			transition: all;
+    			transition-duration: .5s;
+    			transition-timing-function: ease;
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .5s;
+    			-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .5s;
+    			-moz-transition-timing-function: ease;
+			}
+			.productDes{
+		        position: absolute;
+			    bottom: -90px;
+			    left: 18px;
+			    right: 18px;
+			    padding: 16px 18px;
+			    background: #fd2844;
+			    
+			    transition: all;
+    			transition-duration: .3s;
+    			transition-delay: .1s;
+    			transition-timing-function: ease;
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .3s;
+    			-webkit-transition-delay: .1s;
+    			-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .3s;
+    			-moz-transition-delay: .1s;
+    			-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .3s;
+    			-ms-transition-delay: .1s;
+    			-ms-transition-timing-function: ease;
+			    
+			}
+			.productDesLine{
+			    position: absolute;
+			    background: #FFFFFF;
+			    height: 1px;
+			    width: 35px;
+			    right: 0;
+			    bottom: -60px;
+			    
+			    transition: all;
+    			transition-duration: .3s;
+    			transition-delay: .2s;
+    			transition-timing-function: ease;
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .3s;
+    			-webkit-transition-delay: .2s;
+    			-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .3s;
+    			-moz-transition-delay: .2s;
+    			-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .3s;
+    			-ms-transition-delay: .2s;
+    			-ms-transition-timing-function: ease;
+			}
+			
+			.productSerName{
+				color: #FFFFFF;
+				cursor: pointer;
+			    padding-left: 6px;
+			    font-weight: 300;
+			    font-size: 16px;
+			    margin: 0;
+			}
+			.productShowDetail , .productShowDetail:hover{
+				color: #FFFFFF;
+				text-decoration: none;
+			    font-weight: 300;
+    			font-size: 12px;
+    			padding-left: 6px;
+			}
+			
+			.moreProduct , .moreVideo{
+			    width: 108px;
+			    height: 35px;
+			    border: 1px solid #c1c1c1;
+			    border-radius: 35px;
+			    margin: 70px auto 80px auto;
+			    color: #c1c1c1;
+			    cursor: pointer;
+			    
+			    transition: all;
+			    transition-duration: .1s;
+			    transition-timing-function: linear;
+			}
+			.moreProduct p ,.moreVideo p{
+			    font-size: 22px;
+			    margin: 0;
+			    line-height: 35px;
+		        transform: scale(1.6,1);
+		        -moz-transform: scale(2.1,1);
+		        -ms-transform: scale(2.1,1);
+			}
+			
+			.moreProduct:hover ,.moreVideo:hover{
+				border: 1px solid #FFFFFF;
+			    background: #f9223e;
+    			color: #ffffff;
+			}
+			/*--产品*/
+			
+			/*关于我们*/
+			.aboutItem{
+				padding: 0;
+			}
+			.aboutBg , .artistBg{
+				width: 100%;
+			}
+			
+			.aboutLeftPart{
+			    position: absolute;
+			    z-index: 3;
+			    top: 0;
+			    right: -18px;
+			    padding: 16% 0;
+			    height: 100%;
+			    width: 54%;
+			}
+			.aboutLeftPartImg{
+		        position: relative;
+			    width: 100%;
+			    z-index: 2;
+			    
+			    transition: all;
+				transition-duration: .7s;
+				transition-timing-function: ease;
+				
+				-webkit-transition: all;
+				-webkit-transition-duration: .7s;
+				-webkit-transition-timing-function: ease;
+				
+				-moz-transition: all;
+				-moz-transition-duration: .7s;
+				-moz-transition-timing-function: ease;
+				
+				-ms-transition: all;
+				-ms-transition-duration: .7s;
+				-ms-transition-timing-function: ease;
+			}
+			.aboutLeftPartImg:hover{
+				transform: scale(1.02);
+				-webkit-transform: scale(1.02);
+				-moz-transform: scale(1.02);
+				-ms-transform: scale(1.02);
+			}
+			.aboutLeftPartBottom {
+    			position: absolute;
+    			z-index: 1;
+    			height: 30%;
+    			background: #f9223e;
+    			bottom: 24%;
+    			left: -3%;
+    			right: 0;
+			}
+			#aboutItemRight , #artistItemLeft{
+				background: #f0f0f0;
+			}
+			
+			.aboutItemRightContent{
+			    height: 100%;
+				padding: 20% 0 20% 12%;
+			}
+			.aboutTitle {
+			    margin: 10px 0;
+    			color: #f9223e;
+    			font-size: 24px;
+			}
+			.aboutTitleEn{
+			    margin: 10px 0;
+			}
+			.aboutLine{
+			    width: 100%;
+			    height: 1px;
+			    background: #c6c6c6;
+			    margin: 30px 0 35px 0;
+			}
+			.aboutDetailText{
+			    margin: 0;
+    			min-height: 120px;
+			}
+			.aboutMoreInfo{
+			    width: 103px;
+			    height: 32px;
+			    margin: 35px 0 0 0;
+			    border-radius: 32px;
+			    background: #f9223e;
+			    color: #ffffff;
+			    font-size: 15px;
+			    line-height: 32px;
+			}
+			.aboutItemRightContent div{
+			    width: 100%;
+    			height: 1px;
+    			background: #c6c6c6;
+			}
+			
+			.artistRightPart{
+			    position: absolute;
+			    top: 0;
+			    left: -18px;
+			    padding: 18% 0;
+			    height: 100%;
+			    width: 54%;
+			}
+			.artistRightVideo{
+		        position: relative;
+			    width: 100%;
+			    height: 100%;
+			    z-index: 2;
+			    background: #000000;
+			}
+			.artistLeftPartBottom {
+    			position: absolute;
+    			z-index: 1;
+    			height: 30%;
+    			background: #f9223e;
+    			bottom: 21%;
+    			left: 0;
+    			right: -3%;
+			}
+			#contrals{
+			    position: relative;
+			    z-index: 3;
+    			height: 100%;
+    			top: -101.5%;
+			}
+			.videoIcon{
+			    position: absolute;
+			    z-index: 4;
+			    top: 45%;
+			    left: 45%;
+			}
+			
+			.artistItemLeftContent{
+				height: 100%;
+				padding: 20% 12% 20% 0;				
+			}
+			.artistTitle {
+			    margin: 10px 0;
+    			color: #f9223e;
+    			font-size: 24px;
+			}
+			.artistTitleEn{
+			    margin: 10px 0;
+			}
+			.artistLine{
+			    width: 100%;
+			    height: 1px;
+			    background: #c6c6c6;
+			    margin: 30px 0 35px 0;
+			}
+			.artistDetailText{
+			    margin: 0;
+    			min-height: 120px;
+			}
+			.artistMoreInfo{
+			    width: 103px;
+			    height: 32px;
+			    margin: 35px 0 0 0;
+			    border-radius: 32px;
+			    background: #f9223e;
+			    color: #ffffff;
+			    font-size: 15px;
+			    line-height: 32px;
+			}
+			.artistItemRightContent div{
+			    width: 100%;
+    			height: 1px;
+    			background: #c6c6c6;
+			}
+			
+			
+			/*音乐资讯*/
+			#newsTitle{
+				margin: 78px 0 120px 0;
+			}
+			.newsList{
+			    margin: 0;
+			    padding: 0;
+			    list-style: none;
+			    width: 100%;
+			}
+			.newsItem{
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				padding: 0 20px;
+				margin-bottom: 10px;
+				background: #F0F0F0;
+				color: #949494;
+				border: 1px solid #A4A4A4;
+				
+				transition: all;
+				transition-duration: .3s;
+				transition-timing-function: ease;
+				
+				-webkit-transition: all;
+				-webkit-transition-duration: .3s;
+				-webkit-transition-timing-function: ease;
+				
+				-moz-transition: all;
+				-moz-transition-duration: .3s;
+				-moz-transition-timing-function: ease;
+				
+				-ms-transition: all;
+				-ms-transition-duration: .3s;
+				-ms-transition-timing-function: ease;
+			}
+			.newsItem:hover{
+				color: #F8223E;
+				padding-left: 34px;
+			}
+			.newsItemTitle{
+				display: inline-block;
+				font-size: 14px;
+			    overflow: hidden;
+    			text-overflow: ellipsis;
+    			white-space: nowrap;
+			}
+			#newsRight{
+				padding: 70px 70px 20px 70px;
+			}
+			#newsRightContentImg{
+				margin: auto;
+			}
+			.newsRightContentDes{
+			    position: absolute;
+			    bottom: 28%;
+			    right: 15%;
+			}
+			.newsRightContentDes p{
+				margin: 0;
+				padding: 0;
+			}
+			
+			
+			/*视频*/
+			#video{
+				background: #F1F1F1;
+				padding: 78px 0 0 0;
+			}
+			#videoTitle{
+				margin-bottom: 78px;
+			}
+			.videoItemContainer{
+			    padding: 10px 15px;
+    			background: #FFFFFF;
+    			
+    			transition: all;
+    			transition-duration: .6s;
+    			transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .6s;
+    			-webkit-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .6s;
+    			-moz-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .6s;
+    			-ms-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+			}
+			.videoThumb{
+				overflow: hidden;
+			}
+			.videoThumb img{
+				width: 100%;
+				
+				transition: all;
+				transition-duration: .7s;
+				transition-timing-function: ease;
+				
+				-webkit-transition: all;
+				-webkit-transition-duration: .7s;
+				-webkit-transition-timing-function: ease;
+				
+				-moz-transition: all;
+				-moz-transition-duration: .7s;
+				-moz-transition-timing-function: ease;
+				
+				-ms-transition: all;
+				-ms-transition-duration: .7s;
+				-ms-transition-timing-function: ease;
+			}
+			.videoThumb img:hover{
+				transform: scale(1.1);
+			}
+			.videoDes{
+			    padding: 35px 0 20px 0;
+			}
+			.videoTitle{
+			    margin-bottom: 25px;
+			    color: #cacaca;
+			    font-size: 17px;
+		        font-weight: 300;
+		        
+		        transition: all;
+    			transition-duration: .6s;
+    			transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .6s;
+    			-webkit-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .6s;
+    			-moz-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .6s;
+    			-ms-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+			}
+			.videoDesText{
+				font-size: 13px;
+				color: #cacaca;
+			    font-weight: 300;
+			    
+			    transition: all;
+    			transition-duration: .6s;
+    			transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .6s;
+    			-webkit-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .6s;
+    			-moz-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .6s;
+    			-ms-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+			}
+			
+			#videoPlayLayer{
+				position: fixed;
+			    z-index: 999;
+			    min-height: 300px;
+			    top: 0;
+			    width: 100%;
+			    height: 100%;
+			    background: rgba(0,0,0,0.5);
+			}
+			#videoPlayContent{
+			    width: 60%;
+    			margin: auto;
+			}
+			#videoPlayContent video{
+				width: 100%;
+    			height: 100%;
+    			margin-top: 10%;
+			    border-radius: 5px;
+    			border: 10px solid #ffffff;
+    			background: #000000;
+			}
+			video::-internal-media-controls-download-button {
+			    display:none;
+			}
+			video::-webkit-media-controls-enclosure {
+			    overflow:hidden;
+			}
+			video::-webkit-media-controls-panel {
+			    width: calc(100% + 30px); 
+			}
+			#close{
+				text-decoration: none;
+			    position: absolute;
+			    top: 10px;
+			    right: 22px;
+			    color: #FFFFFF;
+			    font-size: 30px;
+			}
+			
+			
+			
+			/*尾巴*/
+			#tMall{
+				padding: 65px 0;
+			}
+			#contact{
+				padding: 95px 0;
+				background: #F7F7F7;
+			}
+			#footerTitle{
+			    margin: 0;
+			    font-size: 28px;
+			    color: #6f6f6f;				
+			}
+			#footerTitleEn{
+			    margin: 0;
+    			color: #a3a3a3;
+				font-size: 14px;
+			}
+			#contactContainer{
+				margin-top: 85px;
+			    font-size: 14px;
+    			color: #7a7a7a;
+    			letter-spacing: 2px;
+			}
+			.contactIcon{
+				margin-right: 10px;
+			}
+			#webInfo{background: #000000;}
+			#webInfo p{
+			    margin: 0;
+			    line-height: 30px;
+			    color: #B1B1B1;
+			}
+			
+			#goTop{
+				display: none;
+			    position: fixed;
+			    z-index: 3;
+		        right: 2%;
+    			bottom: 5%;
+			    width: 42px;
+			    height: 42px;
+			    font-size: 10px;
+			    text-align: -webkit-center;
+			    line-height: 42px;
+			    background: #e0e0e0;
+			    color: #ffffff;
+			    
+			    transition: all;
+    			transition-duration: .3s;
+    			transition-timing-function: ease;
+    			
+    			-webkit-transition: all;
+    			-webkit-transition-duration: .3s;
+    			-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;
+    			-moz-transition-duration: .3s;
+    			-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;
+    			-ms-transition-duration: .3s;
+    			-ms-transition-timing-function: ease;
+			}
+			#goTop span{
+			    transform: scale(2,1.5);
+			}
+			#goTop:hover{
+				background: #F8223E;
+			}
+			
+			/*导航 分辨率设置*/
+			@media only screen and (min-width: 1170px) and (max-width: 1270px) {
+				.navbar{
+					padding: 0 80px;
+				}
+				#nav_list li{
+				    margin-left: 10px;
+				}
+			}
+			@media only screen and (min-width: 970px) and (max-width: 1170px) {
+				.navbar{
+					padding: 0 28px;
+				}
+				#nav_list li{
+				    margin-left: 0;
+				}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 970px) {
+				.navbar{
+					padding: 0 20px;
+				}
+				#nav_list li{
+					width: 74px;
+					margin-left: 0;
+				}
+				#nav_list li a{
+					font-size: 13px;
+					padding: 10px 0;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				#site{
+					width: 100%; height: 50px;display: block;
+				}
+				#header_nav{
+					height: 50px;
+					position: fixed !important;
+					background: rgba(246,246,246,0.98) !important;
+				}
+				.navbar{
+					padding: 0;
+				}
+				#logo{
+					margin-top: 3px;
+				}
+				.navbar-toggle{
+					border: 1px solid #f8223e;
+				}
+				.navbar-toggle .icon-bar{
+					background: #f8223e;
+				}
+				#navbar{
+					background: rgba(246,246,246,0.98) !important;
+				}
+				#nav_list{
+				    width: 100%;
+    				margin: 0;
+				}
+				.nav_item{
+				    width: 100% !important;
+				    margin: 0 !important;
+				    height: 50px !important;
+				    line-height: 50px !important;
+				    border-bottom: 1px solid #eeeeee;
+				}
+				.nav_item a{
+				    height: 50px !important;
+				    line-height: 32px !important;
+				    color: #4a4a4a !important;
+				}
+			}
+			
+			
+			/*关于我们 分辨率设置*/
+			@media only screen and (min-width: 1500px) and (max-width: 1600px) {
+				.aboutItemRightContent{
+					padding: 16% 0 20% 12%;
+				}
+			}
+			@media only screen and (min-width: 1300px) and (max-width: 1500px) {
+				.aboutItemRightContent{
+					padding: 12% 0 20% 12%;
+				}
+			}
+			@media only screen and (min-width: 1170px) and (max-width: 1300px) {
+				.aboutItemRightContent{
+					padding: 10% 0 20% 12%;
+				}
+			}
+			@media only screen and (min-width: 970px) and (max-width: 1170px) {
+				.aboutItemRightContent{
+					padding: 8% 0 20% 12%;					
+				}
+				.aboutLine{
+					margin: 10px 0 10px 0;
+				}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 970px) {
+				.aboutItemRightContent{
+					padding: 3% 0 20% 12%;
+				}
+				.aboutTitle{
+					margin: 0;
+					font-size: 18px;
+				}
+				.aboutLine{
+					margin: 10px 0 10px 0;
+				}
+				.aboutMoreInfo{
+					margin: 10px 0 0 0;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				
+				/*产品*/
+				.productItem img{top: -40px !important;}
+				.productDes{bottom: 18px !important;}
+				.productDesLine{bottom: 75px !important;}
+				
+				.aboutLeftPart{
+				    right: 0px;
+			        padding: 20% 0;
+		            width: 60%;
+				}
+				.aboutLeftPartBottom{
+				    bottom: 12%;
+				}
+				#aboutItemRight{min-height: 290px;}
+				.aboutItemRightContent{
+				    padding: 14px;
+				}
+				.aboutLine{
+					margin: 20px 0 25px 0;
+				}
+				.aboutMoreInfo{
+				    margin: 0;
+				}
+				
+				#artistItemLeft{min-height: 290px;}
+				.artistItemLeftContent{
+				    padding: 14px;
+				}
+				.artistLeftPartBottom{
+					right: 0;
+				}
+				.artistLine{
+					margin: 20px 0 25px 0;
+				}
+				.artistRightPart{
+					left: 0;
+				    padding: 10% 0;
+				    height: 100%;
+				    width: 100%;
+				}
+				.videoIcon{
+				    top: 40%;
+    				left: 46%;
+				}
+				
+				/*资讯*/
+				#newsRight{
+					padding: 20px 40px 20px 40px;
+				}
+				#newsRightContentImg{
+					width: 100%;
+				}
+				.newsRightContentDes{
+				    right: 10%;
+				}
+				
+				/*视频*/
+				.videoItem{
+				    margin-bottom: 18px;
+				}
+				#videoPlayContent{width: 95% !important;}
+				#videoDom{margin-top: 50% !important;}
+				
+				/*天猫店*/
+				#tMall{
+					padding: 35px 0;
+				}
+			}
+			
+			/*footer*/
+			@media only screen and (max-width: 768px) {
+				#contact{
+					padding: 55px 0;
+				}
+				#contactContainer{
+					margin-top: 70px;
+				}
+				.contactItem{
+				    margin-bottom: 30px;
+				}
+			}
+					
+		</style>
+		
+	</head>
+	<body>
+		
+		<header id="header_nav">
+			<nav class="navbar" id="nav">
+				<div id="nav_contant" class="container-fluid">
+					<div class="navbar-header">
+				        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				            <span class="sr-only">Toggle navigation</span>
+				            <span class="icon-bar"></span>
+				            <span class="icon-bar"></span>
+				            <span class="icon-bar"></span>
+				       	</button>
+			        	<a class="navbar-brand" href="/">
+			        		<img id="logo" src="/statics/hailunguitar/imgs/logo.png"/>
+			        	</a>
+			        </div>
+			        <div id="navbar" class="collapse navbar-collapse">
+			          	<ul id="nav_list" class="nav navbar-nav pull-right">
+			          		<li class="nav_item"><a class="text-center" href="/">首页</a></li>
+							{pc:content action="category" catid="0" num="" siteid="$siteid" order="listorder ASC"}
+							{loop $data $r}
+							<li class="nav_item"><a class="text-center" href="{$r[url]}">{$r[catname]}</a></li>
+							{/loop}
+							{/pc}
+							<!--<li><span></span></li>
+							<li><a href="https://www.tmall.com/">天猫店</a></li>
+							<li><a href=""><p>EN</p></a></li>-->
+			          	</ul>
+			        </div>
+				</div>
+			</nav>
+		</header>
+		<section id="site"></section>
+		
+		<!--轮播海报-->
+		<section id="lunbo">
+		    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		      	<ol class="carousel-indicators">
+		        	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			        <li data-target="#myCarousel" data-slide-to="1"></li>
+		      	</ol>
+		      	<div class="carousel-inner" role="listbox">
+			        <div class="item active">
+			          	<img class="first-slide" src="/statics/hailunguitar/imgs/banner.jpg" alt="HailunGuitar">
+			        </div>
+			        <div class="item">
+			          	<img class="second-slide" src="/statics/hailunguitar/imgs/banner1.jpg" alt="HailunGuitar1">
+			        </div>
+		      	</div>
+		      	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			        <span class="sr-only">Previous</span>
+		      	</a>
+		      	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			        <span class="sr-only">Next</span>
+		      	</a>
+		    </div>
+		</section>
+		
+		<!--产品-->
+		<section id="product">
+			<div class="container">
+				<div id="productTitle" class="row">
+					<p class="wow fadeInUp sectionTitle" data-wow-delay=".1s">产品<span>Music Product</span></p>
+				</div>
+				<div id="productContent" class="row">
+					{pc:content action="lists" catid="1" num="6" order="ID ASC" moreinfo="1" return="data1"}
+					{loop $data1 $r}
+					<a href="{$r[url]}">
+						<div class="wow fadeInUp productItemContainer col-lg-4 col-md-4 col-sm-4 col-xs-12" data-wow-delay=".1s">
+							<div class="productItem">
+								<img src="{$r[thumb]}" class="wow productImg img-responsive"/>
+								<div class="productDes">
+									<p class="productSerName">{$r[title]}</p>
+									<a class="productShowDetail" href="{$r[url]}" >查看详情</a>
+								</div>
+								<div class="productDesLine"></div>
+							</div>
+						</div>
+					</a>
+					{/loop}
+					{/pc}
+				</div>
+				
+				<div class="wow fadeInUp row" data-wow-delay=".2s">
+					<a href="/index.php?m=content&c=index&a=lists&catid=1">
+						<div class="moreProduct">
+							<p class="text-center">→</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+		
+		<!--关于我们-->
+		<section id="about">
+			<div class="container-fluid">
+				<div class="row aboutItemContainer">
+					<div id="aboutItemLeft" class="aboutItem col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="">
+							<img class="aboutBg pull-right" src="/statics/hailunguitar/imgs/about_bg1.jpg"/>
+							<div class="aboutLeftPart">
+								<img class="wow fadeInUp aboutLeftPartImg" src="/statics/hailunguitar/imgs/about_bg.jpg" data-wow-delay=".1s"/>
+								<div class="aboutLeftPartBottom"></div>
+							</div>
+						</div>
+					</div>
+					<div id="aboutItemRight" class="aboutItem col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="wow fadeInUp aboutItemRightContent col-lg-7 col-md-8 col-sm-10 col-xs-12" data-wow-delay=".1s">
+							<p class="wow fadeInUp aboutTitle" data-wow-delay=".15s">关于我们</p>
+							<p class="wow fadeInUp aboutTitleEn" data-wow-delay=".2s">About us</p>
+							<div class="wow fadeInUp aboutLine" style="" data-wow-delay=".25s"></div>
+							<p class="wow fadeInUp aboutDetailText" data-wow-delay=".3s">关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们</p>
+							<a href="/index.php?m=content&c=index&a=lists&catid=2" class="wow fadeInUp" data-wow-delay=".45s">
+								<p class="aboutMoreInfo text-center">MORE</p>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row aboutItemContainer">
+					<div id="artistItemLeft" class="aboutItem col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="wow fadeInUp artistItemLeftContent pull-right col-lg-7 col-md-8 col-sm-10 col-xs-12" data-wow-delay=".1s">
+							<p class="wow fadeInUp artistTitle text-right" data-wow-delay=".15s">海伦吉他艺术家</p>
+							<p class="wow fadeInUp artistTitleEn text-right" data-wow-delay=".2s">Artist</p>
+							<div class="wow fadeInUp artistLine" data-wow-delay=".25s"></div>
+							<p class="wow fadeInUp artistDetailText text-right" data-wow-delay=".3s">关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们</p>
+						</div>
+					</div>
+					<div id="artistItemRight" class="aboutItem col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="">
+							<img class="artistBg" src="/statics/hailunguitar/imgs/artist_bg1.jpg"/>
+							<div class="artistRightPart">
+								<video id="artistVideo" class="wow fadeInUp artistRightVideo" preload="auto" data-wow-delay=".1s">
+									<source src="http://orj5rmdl9.bkt.clouddn.com/%E6%B5%B7%E4%BC%A6-%E6%B5%B7%E4%BC%A6%E9%92%A2%E7%90%B4%E5%AE%A3%E4%BC%A0%E7%89%87.mp4" type="video/mp4"></source>
+								</video>
+								<img id="playIcon" class="wow fadeInUp videoIcon" title="点击播放" src="/statics/hailunguitar/imgs/icon_play.png" data-wow-delay=".3s"/>
+								<div class="artistLeftPartBottom"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--音乐资讯-->
+		<section id="news">
+			<div class="container">
+				<div class="row">
+					<div id="newsLeft" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="">
+							<div class="newsLeftContent">
+								<p id="newsTitle" class="wow fadeInUp sectionTitle" data-wow-delay=".1s">音乐资讯<span>Music information</span></p>
+								<ul class="newsList">
+									{pc:content action="lists" catid="3" order="ID DESC" num="6" moreinfo="1" return="data2"}
+									{loop $data2 $s}
+									<a href="{$s[url]}">
+										<li class="wow fadeInUp newsItem" data-wow-delay="0.1s">
+											<p class="newsItemTitle">{$s[title]}</p>
+											<span class="newsItemDate pull-right">{date("Y-m-d",$s[inputtime])}</span>
+										</li>
+									</a>
+									{/loop}
+									{/pc}
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div id="newsRight" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="">
+							<div id="newsRightContent" class="">
+								<img class="wow fadeInUp" id="newsRightContentImg" src="/statics/hailunguitar/imgs/news_img.png" class="img-responsive"/>
+							</div>
+							<div class="wow fadeInUp newsRightContentDes text-right" data-wow-delay="0.2s">
+								<p style="color: #bbbbbb;font-size: 12px;">风启</p>
+								<p style="font-size: 20px;color: #F9223E;">ONE系</p>
+								<p style="color: #bbbbbb;font-size: 12px;">ONE系ONE系ONE系</p>
+								<p style="color: #bbbbbb;font-size: 12px;">ONE系ONE系ONE系</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>		
+		
+		<!--视频-->
+		<section id="video">
+			<div class="container">
+				<p id="videoTitle" class="wow fadeInUp sectionTitle" data-wow-delay=".1s">视频<span>Video</span></p>
+				<div class="row">
+					{pc:content action="lists" catid="5" num="3" order="ID DESC" moreinfo="1" return="data3"}
+					{loop $data3 $v}
+					<div class="wow fadeInUp videoItem col-lg-4 col-md-4 col-sm-4 col-xs-12" data-wow-delay="0.1s">
+						<div class="videoItemContainer" videoSrc="{$v[videoUrl]}">
+							<div class="videoThumb">
+								<img src="{$v[thumb]}"/>
+							</div>
+							<div class="videoDes">
+								<p class="videoTitle text-center">{$v[title]}</p>
+								<p class="videoDesText">{$v[description]}</p>
+							</div>
+						</div>
+					</div>
+					{/loop}
+					{/pc}
+				</div>
+				
+				<div class="wow fadeInUp row" data-wow-delay="0.4s">
+					<a href="/index.php?m=content&c=index&a=lists&catid=5">
+						<div class="moreVideo">
+							<p class="text-center">→</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			
+			<div id="videoPlayLayer" style="display: none;">
+				<div id="videoPlayContent" class=""></div>
+				<a id='close' href='javascript:closeVideo();'>×</a>
+			</div>
+		</section>
+		
+		<!--尾巴-->
+		<footer id="footer">
+			<div class="container-fluid">
+				<div id="tMall" class="wow fadeInUp row" data-wow-delay="0.1s">
+					<a target="_blank" href="https://www.tmall.com/">
+						<div class="footerTmallCon">
+							<img src="/statics/hailunguitar/imgs/tmall.png" class="wow footerTmall img-responsive center-block"/>
+						</div>
+					</a>
+				</div>
+				<div id="contact" class="wow fadeInUp row">
+					<p id="footerTitle" class="wow fadeInUp text-center" data-wow-delay="0.2s">联系</p>
+					<p id="footerTitleEn" class="wow fadeInUp text-center" data-wow-delay="0.3s">CONTACT</p>
+					<div id="contactContainer" class="container">
+						<div class="row">
+							<div class="contactItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="">
+									<p class="wow fadeInUp" id="weiboTitle" data-wow-delay="0.35s">官方微博、qq、公众号</p>
+									<a class="wow fadeInUp" data-wow-delay="0.4s" target="_blank" href="https://weibo.com/">
+										<img id="contactWeibo" class="contactIcon" src="/statics/hailunguitar/imgs/weibo.png"/>
+									</a>
+									<a class="wow fadeInUp" data-wow-delay="0.4s" href="tencent://message/?uin=545996113&Site=Sambow&Menu=yes">
+										<img id="contactQQ" class="contactIcon" src="/statics/hailunguitar/imgs/qq.png"/>
+									</a>
+									<a class="wow fadeInUp" data-wow-delay="0.4s" href="">
+										<img  id="contactWeixin" class="contactIcon" src="/statics/hailunguitar/imgs/weixin.png"/>
+									</a>
+								</div>
+							</div>
+							<div class="contactItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="">
+									<p class="wow fadeInUp" data-wow-delay="0.4s">手机 / Phone：400-8574-500</p>
+									<p class="wow fadeInUp" data-wow-delay="0.45s">电话 / Tel：400-8574-500</p>
+									<p class="wow fadeInUp" data-wow-delay="0.5s">传真 / Fax：400-8574-500</p>
+								</div>
+							</div>
+							<div class="contactItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="">
+									<p class="wow fadeInUp" data-wow-delay=".4s">邮编 / Post：00000000</p>
+									<p class="wow fadeInUp" data-wow-delay=".45s">邮箱 / E-mail：hailunqc@126.com</p>
+									<p class="wow fadeInUp" data-wow-delay=".5s">地址 / Addr：浙江省宁波市北仑区龙潭山路36号</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="webInfo" class="row">
+					<p class="text-center">© 2005-2018 hailunguitar.com 版权所有 浙ICP备13037236号-5 <span>浙公网安备 33020602000296号</span></p>
+				</div>
+			</div>
+			
+			<div id="goTop">
+				<span id="" class="glyphicon glyphicon-menu-up"></span>
+			</div>
+		</footer>
+		
+		<script type="text/javascript">
+			
+			var windowWidth = $(window).width();
+			
+			window.onload=function () {
+				init();
+				someEventFunc();
+				//动画初始化
+				var wow = new WOW({
+				    boxClass: 'wow',
+				    animateClass: 'animated',
+				    offset: 100,
+				    mobile: false,
+				    live: true
+				});
+				wow.init();
+			}
+			
+			//导航栏滚动固定样式
+			window.onscroll=function () {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				var nav = document.getElementById("header_nav");
+				console.info(scrollTop);
+				
+				if (windowWidth > 768) {
+					if (scrollTop >= 100) {
+						//设置新样式
+						$("#header_nav").addClass("header_nav_fixed");
+						$("#logo").addClass("logo_fixed");
+						$(".nav_item").addClass("nav_item_fixed");
+						$(".nav_item a").addClass("nav_item_a_fixed");
+						
+						nav.style.position="fixed";
+					} else{
+						//设置新样式
+						$("#header_nav").removeClass("header_nav_fixed");
+						$("#logo").removeClass("logo_fixed");
+						$(".nav_item").removeClass("nav_item_fixed");
+						$(".nav_item").find("a").removeClass("nav_item_a_fixed");
+						nav.style.position="absolute";
+					}
+				}
+				
+				
+				if (scrollTop >= 700) {
+					$("#goTop").fadeIn(100);
+				}else{
+					$("#goTop").fadeOut(100);
+				}
+			}
+			
+			window.onresize=function () {
+				windowWidth = $(window).width();
+				init();
+			}
+			
+			function init () {
+				var aboutHeight = $("#aboutItemLeft").height();
+				var artistHeight = $("#artistItemRight").height();
+				$("#aboutItemRight").height(aboutHeight);			
+				$("#artistItemLeft").height(artistHeight);
+			}
+			
+			function someEventFunc () {
+				var video = document.getElementById("artistVideo");
+				var playIcon = $("#playIcon");
+				var pauseIcon = $("#pauseIcon");
+				
+				$("#contrals").hover(function () {
+					if (!video.paused) {
+						pauseIcon.show();
+					}
+				},function () {
+					if (!video.paused) {
+						pauseIcon.hide();
+					}
+				})
+				$("#playIcon").click(function () {video.play();$(this).hide(); video.setAttribute("controls","controls")});
+				
+				$(".nav_item").hover(function () {
+					$(this).find("a").addClass("nav_a_hover");
+				},function () {
+					$(this).find("a").removeClass("nav_a_hover");
+				})
+				
+				//video
+				$(".videoItemContainer").hover(function () {
+					$(this).css("background","#E42A4F");
+					$(this).find(".videoTitle").css("color","#FFFFFF");
+					$(this).find(".videoDesText").css("color","#FFFFFF");
+				},function () {
+					$(this).css("background","#FFFFFF");
+					$(this).find(".videoTitle").css("color","#cacaca");
+					$(this).find(".videoDesText").css("color","#cacaca");
+				})
+				
+				$(".videoItemContainer").click(function () {
+					var video = document.getElementById("videoDom");
+					var src = $(this).attr("videoSrc");
+					
+					var videoHtml = "<video id='videoDom' controls autoplay><source id='videoSource' src='"+src+"' type='video/mp4'></source></video>";
+					$("#videoPlayLayer").show();
+					$("#videoPlayContent").html(videoHtml);
+				})
+				
+				//页尾图标
+				$("#contactWeibo").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo.png");
+				})
+				
+				$("#contactQQ").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq.png");
+				})
+				
+				$("#contactWeixin").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin.png");
+				})
+				
+				//页尾 天猫图标
+				$(".footerTmallCon").hover(function () {
+					$(".footerTmall").css("animation-name","bounceIn");
+				},function () {
+					$(".footerTmall").css("animation-name","none");
+				})
+				
+				//返回顶部
+				$("#goTop").click(function () {
+					$("html ,body").animate({scrollTop:0},500);
+				})
+				
+				//产品
+				$(".productItem").hover(function () {
+					$(this).find(".productImg").css("top","-40px");
+					$(this).find(".productDes").css("bottom","18px");
+					$(this).find(".productDesLine").css("bottom","75px");
+				},function () {
+					$(this).find(".productDes").css("bottom","-90px");
+					$(this).find(".productDesLine").css("bottom","-60px");
+					$(this).find(".productImg").css("top","0");
+				})
+			}
+			
+			
+			function closeVideo () {
+				$("#videoPlayLayer").hide();
+				$("#videoDom").remove();
+			}
+			
+		</script>
+	</body>
+</html>

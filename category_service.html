@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta name="keywords" content="{$SEO['keyword']}">
+		<meta name="description" content="{$SEO['description']}">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/statics/hailunguitar/css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="statics/hailunguitar/css/swiper.min.css"/>
+		<script src="/statics/hailunguitar/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/statics/hailunguitar/js/wow.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="statics/hailunguitar/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<!--导航-->
+		<style type="text/css">
+			*{
+				font-family: "microsoft yahei";
+				letter-spacing: 2px;
+			}
+			a , a:hover , a:active{
+				text-decoration: none;
+			}
+			.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{background-color: none;}
+			/*鼠标效果 禁用背景色*/
+			#nav_list li a:hover ,#nav_list li a p:hover{background: none;}
+			
+			#header_nav{
+				position: fixed;
+				z-index: 10;
+				width: 100%;
+				height: 60px;
+				border-bottom: 1px solid #FFFFFF;
+				background: rgba(246,246,246,0.98);
+				transition: all;
+				transition-duration: .3s;
+				-moz-transition-timing-function:  linear;
+			}
+			.navbar{
+				width: 100%;
+			    padding: 0 120px;
+			    margin: 0;
+			    border: none;
+			}
+			.navbar-brand{
+				padding: 0 !important;
+			}
+			#logo{
+				margin-top: 6px;					
+			}
+			#nav_list li{
+				width: 102px;
+			    height: 60px;
+    			line-height: 60px;
+    			margin-left: 15px;
+			}
+			#nav_list li a{
+				font-size: 15px;
+				color: #4a4a4a;	
+			    height: 60px;
+    			line-height: 30px;	
+			    letter-spacing: 2px;
+			}
+			#nav_list li a p{
+			    margin: 0;
+			    width: 40px;
+			    height: 22px;
+			    line-height: 22px;
+			    text-align: -webkit-center;
+			    display: inline-block;
+			    border: 1px solid #ffffff;
+			    border-radius: 10px;
+			    font-size: 16px;
+			    color: #FFFFFF;
+			}
+			#nav_list li span{
+			    line-height: 48px;
+			    height: 48px;
+			    width: 1px;
+			    border: 1px solid #ffffff;
+			    margin: 0 10px;
+			}
+			
+			.nav_item:after{
+				content: "";  
+			    width: 0;  
+			    height: 1px;  
+			    background: #f8223e;  
+			    position: absolute;  
+			    top: 100%;  
+			    left: 50%;  
+			    transition: all .3s; 
+			}
+			.nav_item:hover:after{  
+			   left: 0%;  
+			   width: 100%;  
+			}
+			 /*手机端 下拉按钮*/
+			.navbar-toggle{
+			    border: 1px solid #FFFFFF;
+			}
+			.icon-bar{
+				background: #FFFFFF;
+			}/*--手机端 下拉按钮*/
+			
+			#site{width: 100%;height: 60px; display: block;}
+			
+			/*鼠标悬停效果*/
+			.nav_a_hover{
+				color: #f9223e !important;
+			}
+			
+			/*导航 各分辨率设置*/
+			@media only screen and (min-width: 1170px) and (max-width: 1270px) {
+				.navbar{
+					padding: 0 80px;
+				}
+				#nav_list li{
+				    margin-left: 10px;
+				}
+			}
+			@media only screen and (min-width: 970px) and (max-width: 1170px) {
+				.navbar{
+					padding: 0 28px;
+				}
+				#nav_list li{
+				    margin-left: 0;
+				}
+			}
+			@media only screen and (min-width: 768px) and (max-width: 970px) {
+				.navbar{
+					padding: 0 20px;
+				}
+				#nav_list li{
+					width: 74px;
+					margin-left: 0;
+				}
+				#nav_list li a{
+					font-size: 13px;
+					padding: 10px 0;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				#site{
+					height: 50px;
+				}
+				#header_nav{
+					height: 50px;
+					position: fixed !important;
+					background: rgba(246,246,246,0.98) !important;
+				}
+				.navbar{
+					padding: 0;
+				}
+				#logo{
+					margin-top: 3px;
+				}
+				.navbar-toggle{
+					border: 1px solid #f8223e;
+				}
+				.navbar-toggle .icon-bar{
+					background: #f8223e;
+				}
+				#navbar{
+					background: rgba(246,246,246,0.98) !important;
+				}
+				#nav_list{
+				    width: 100%;
+    				margin: 0;
+				}
+				.nav_item{
+				    width: 100% !important;
+				    margin: 0 !important;
+				    height: 50px !important;
+				    line-height: 50px !important;
+				    border-bottom: 1px solid #eeeeee;
+				}
+				.nav_item a{
+				    height: 50px !important;
+				    line-height: 32px !important;
+				    color: #4a4a4a !important;
+				}
+			}/*导航 分辨率设置*/
+			
+		</style>
+		
+		<!--产品-->
+		<style type="text/css">
+			/*产品*/
+			#sectionTitle{
+				margin: 100px 0 0 0;
+			}
+			
+			.sectionTitle{
+				font-size: 28px;
+				color: #5b5b5b;
+				margin: 0;
+			}
+			.sectionTitleEn{
+				font-size: 14px;
+				color: #A3A3A3;
+				margin: 0;
+			}
+			
+			#sectionNav{
+			    margin: 36px 0 56px 0;
+			}
+			#sectionNavList{
+			    margin: 0;
+			    padding: 0;
+			    list-style: none;
+			}
+			.sectionNavListItem{
+		        position: relative;
+			    display: inline-block;
+			    width: 100px;
+			    padding: 0;
+			    cursor: pointer;
+			    color: #6F6F6F;
+			}
+			.sectionNavListItemActive{
+				color: #F8223E;
+			}
+			.sectionNavListItem:hover{
+				color: #F8223E;
+			}
+			.sectionNavListItem:before{
+			    content: "/";
+			    right: -5px;
+			    color: #A3A3A3;
+			    position: absolute;
+			}
+			.sectionNavListItem:last-child:before{
+				display: none;
+			}
+			.sectionNavContainer{
+				margin-top: 55px;
+			    margin-bottom: 100px;
+		        background: #f8f8f8;
+    			min-height: 300px;
+			}
+			
+			.formContainer{
+		        padding: 55px 15px 100px 15px;
+			    width: 84%;
+			    margin: auto;
+			}
+			.formDes{
+			    font-size: 14px;
+			    color: #939393;
+			    margin-bottom: 40px;
+			}
+			.cutLine{
+				height: 1px;
+				background: #dcdcdc;
+			    margin-bottom: 40px;
+			}
+			
+			.formItem{
+			    margin-bottom: 22px;
+			}
+			.formLeftText{
+			    margin: 0;
+    			font-size: 13px;
+    			color: #6f6f6f;
+			}
+			.formLeftText span{
+				color: #e42a4f;
+			}
+			.formRightInput{
+			    width: 100%;
+			    height: 30px;
+			    border: 1px solid #dcdcdc;
+			}
+			.formRightTextA{
+				width: 100%;
+				min-height: 128px;
+				border: 1px solid #dcdcdc;
+				resize: none;
+			}
+			.submitBtn{
+			    padding-top: 38px;
+			}
+			.submitBtn a{
+			    display: block;
+			    width: 153px;
+			    height: 45px;
+			    line-height: 45px;
+			    margin: auto;
+			    color: #6f6f6f;
+			    border: 1px solid #aeaeae;
+			}
+			.submitBtn a:hover {
+			    background: #f8223e;
+			    color: #ffffff;
+			    border: none;
+			}
+			
+			
+			.fangweiContainer {
+			    width: 50%;
+			    margin: auto;
+			    padding: 55px 24px 70px 24px;
+			}
+			.fangweiTop{
+				text-align: center;text-align: -webkit-center;text-align: -moz-center;
+			}
+			.fangweiLiucheng {
+			    margin: 0;
+			    display: inline-block;
+			    font-size: 13px;
+			    color: #6f6f6f;
+			}
+			.fangweiLiucheng span {
+			    color: #FFFFFF;
+			    background: #e42a4f;
+			    margin-right: 5px;
+			    padding: 3px;
+			}
+			.fangweiContent{
+			    padding: 35px 0;
+			}
+			#fwsn{
+			    width: 60%;
+			    height: 31px;
+			    border: 1px solid #dcdcdc;
+			    text-indent: 14px;
+			}
+			#fwBtn{
+			    width: 25%;
+			    margin-left: 5%;
+			    float: right;
+			    height: 31px;
+			    border: 1px solid #aeaeae;
+			    background: #f4f4f4;
+			}
+			.resultShow{
+			    min-height: 70px;
+			    padding: 20px 0;
+			    background: #ffffff;
+			    border: 1px solid #dcdcdc;
+			}
+			#resultTip{
+    			margin: 0;
+    			min-height: 70px;
+    			line-height: 70px;
+			    font-size: 13px;
+			    color: #d8d8d8;
+			}
+			#guitarInfo{
+				margin: auto;
+			    width: 360px;
+			}
+			
+		</style>
+		
+		<!--页尾-->
+		<style type="text/css">
+			/*页尾*/
+			#contact{padding: 95px 0;background: #F7F7F7;}
+			#footerTitle{margin: 0;font-size: 28px;color: #6f6f6f;}
+			#footerTitleEn{margin: 0;color: #a3a3a3;font-size: 14px;}
+			#contactContainer{margin-top: 85px;font-size: 14px;color: #7a7a7a;letter-spacing: 2px;}
+			.contactIcon{margin-right: 10px;}
+			#webInfo{background: #000000;}
+			#webInfo p{margin: 0;line-height: 30px;color: #b1b1b1;}
+			/*footer*/
+			@media only screen and (max-width: 768px) {
+				#contact{padding: 55px 0;}
+				#contactContainer{margin-top: 70px;}
+				.contactItem{margin-bottom: 30px;}
+			}
+		</style>
+		
+		<style type="text/css">
+			/*返回顶部*/
+			#goTop{display: none;position: fixed;right: 2%;bottom: 5%;width: 42px;height: 42px;font-size: 10px;text-align: -webkit-center;
+			    line-height: 42px;border: 1px solid #f0f0f0;background: #e0e0e0;color: #ffffff;
+			    
+			    transition: all;transition-duration: .3s;transition-timing-function: ease;
+    			
+    			-webkit-transition: all;-webkit-transition-duration: .3s;-webkit-transition-timing-function: ease;
+    			
+    			-moz-transition: all;-moz-transition-duration: .3s;-moz-transition-timing-function: ease;
+    			
+    			-ms-transition: all;-ms-transition-duration: .3s;-ms-transition-timing-function: ease;
+			}
+			#goTop span{transform: scale(2,1.5);}
+			#goTop:hover{background: #F8223E;}
+		</style>
+		
+	</head>
+	<body>
+		
+		{template "content","header"}
+		
+		<!--关于我们-->
+		<section id="product">
+			<div class="container">
+				<div id="sectionTitle" class="row text-center">
+					<p class="wow fadeInUp sectionTitle" data-wow-delay=".1s">服务</p>
+					<p class="wow fadeInUp sectionTitleEn" data-wow-delay=".2s">Service</p>
+				</div>
+				<div id="sectionNav" class="row text-center">
+					<ul id="sectionNavList">
+						<li class="wow fadeInUp sectionNavListItem" catid="14" data-wow-delay=".2s">维修咨询</li>
+						<li class="wow fadeInUp sectionNavListItem" catid="15" data-wow-delay=".2s">防伪验证</li>
+					</ul>
+				</div>
+				<div class="row sectionNavContainer" catid="14">
+					<div class="formContainer">
+						<p class="formDes wow fadeInUp" data-wow-delay=".1s">亲爱的朋友，感谢您对海伦吉他的支持与信任。若您有任何琴款维修的需求，请完整填写本维修谘询表格，我们将于次工作日回覆您。 若您想了解更多产品资讯，或想谘询合作方式，请至下方联系方式处联系我们，我们会尽速回覆您。</p>
+						<div class="cutLine wow fadeInUp" data-wow-delay=".15s"></div>
+						<div class="formContent">
+							<div class="formItem row wow fadeInUp" data-wow-delay=".2s">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<p class="formLeftText">申请人姓名<span>*</span></p>
+								</div>
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+									<input class="formRightInput" type="text" name="name" id="name" value="" />
+								</div>
+							</div>
+							<div class="formItem row wow fadeInUp" data-wow-delay=".25s">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<p class="formLeftText">联络电话<span>*</span></p>
+								</div>
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+									<input class="formRightInput" type="text" name="tel" id="tel" value="" />
+								</div>
+							</div>
+							<div class="formItem row wow fadeInUp" data-wow-delay=".3s">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<p class="formLeftText">琴款序号<span>*</span></p>
+								</div>
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+									<input class="formRightInput" type="text" name="sn" id="sn" value="" />
+								</div>
+							</div>
+							<div class="formItem row wow fadeInUp" data-wow-delay=".35s">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<p class="formLeftText">电子信箱<span>*</span></p>
+								</div>
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+									<input class="formRightInput" type="text" name="email" id="email" value="" />
+								</div>
+							</div>
+							
+							<div class="formItem row wow fadeInUp" data-wow-delay=".1s">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<p class="formLeftText">维修咨询项目<span>*</span><br />(简单条列即可)</p>
+								</div>
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+									<textarea class="formRightTextA" name="info" id="info"></textarea>
+								</div>
+							</div>
+							<div class="formItem row wow fadeInUp" data-wow-delay=".1s">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<p class="formLeftText">其他要求</p>
+								</div>
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+									<textarea class="formRightTextA" name="other" id="other"></textarea>
+								</div>
+							</div>
+							
+							<div class="formItem row wow fadeInUp" data-wow-delay=".4s">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+									<p class="formLeftText">备注:<span>*</span>代表必填栏位</p>
+								</div>
+							</div>
+							
+							<div class="submitBtn row wow fadeInUp" data-wow-delay=".45s">
+								<a class="text-center" href="javascript:submitInfo()">确定发送</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row sectionNavContainer" catid="15">
+					<div class="fangweiContainer">
+						<div class="wow fadeInUp fangweiTop" data-wow-delay=".1s">
+							<p class="fangweiLiucheng"><span>01</span>刮开涂层取防伪码 ></p>
+							<p class="fangweiLiucheng"><span>02</span>输入防伪码 ></p>
+							<p class="fangweiLiucheng"><span>03</span>点击验证 ></p>
+							<p class="fangweiLiucheng"><span>04</span>显示查询结果</p>
+						</div>
+						<div class="wow fadeInUp fangweiContent" data-wow-delay=".1s">
+							<input type="text" name="fwsn" id="fwsn" value="" placeholder="输入序列号(测试123456789)" />
+							<input type="button" name="fwBtn" id="fwBtn" value="点击查询" onclick="fwFun()" />
+						</div>
+						<div id="resultShow" class="wow fadeInUp resultShow" data-wow-delay=".1s">
+							<p id="resultTip" class="text-center">结果显示区</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		
+		<!--尾巴-->
+		{template "content","footer"}
+		
+		<script type="text/javascript">
+			
+			window.onload=function () {
+				init();
+				someEventFunc();
+			}
+			
+			function init () {
+				//动画初始化
+				var wow = new WOW({
+				    boxClass: 'wow',
+				    animateClass: 'animated',
+				    offset: 10,
+				    mobile: false,
+				    live: true
+				});
+				wow.init();
+			}
+			
+			//导航栏滚动固定样式
+			window.onscroll=function () {
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				
+				if (scrollTop >= 1100) {
+					$("#goTop").fadeIn(100);
+				}else{
+					$("#goTop").fadeOut(100);
+				}
+			}
+			
+			
+			function someEventFunc () {
+				
+				$(".nav_item").hover(function () {
+					$(this).find("a").addClass("nav_a_hover");
+				},function () {
+					$(this).find("a").removeClass("nav_a_hover");
+				})
+				
+				//切换系列
+				$(".sectionNavListItem").click(function () {
+					var catid = $(this).attr("catid");
+					selectSerItem(catid);
+				})
+				//默认
+				selectSerItem($(".sectionNavListItem").first().attr("catid"));
+				
+				//页尾图标
+				$("#contactWeibo").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weibo.png");
+				})
+				
+				$("#contactQQ").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/qq.png");
+				})
+				
+				$("#contactWeixin").hover(function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin_hover.png");
+				},function () {
+					$(this).attr("src","/statics/hailunguitar/imgs/weixin.png");
+				})
+				
+				//页尾 天猫图标
+				$(".footerTmallCon").hover(function () {
+					$(".footerTmall").css("animation-name","bounceIn");
+				},function () {
+					$(".footerTmall").css("animation-name","none");
+				})
+				
+				//返回顶部
+				$("#goTop").click(function () {
+					$("html ,body").animate({scrollTop:0},500);
+				})
+			}
+			
+			//选择系列
+			function selectSerItem (catid) {
+				//
+				$(".sectionNavListItem[catid="+catid+"]").addClass("sectionNavListItemActive").siblings(".sectionNavListItem").removeClass("sectionNavListItemActive");
+				$(".sectionNavContainer[catid="+catid+"]").show().siblings(".sectionNavContainer").hide();
+			}
+			
+			function submitInfo () {
+				var name = $("#name").val();
+				var tel = $("#tel").val();
+				var sn = $("#sn").val();
+				var email = $("#sn").val();
+				var info = $("#info").val();
+				var other = $("#other").val();
+				
+				if (name!="" && tel!="" && sn!="" && email!="" && info!="") {
+					 if (confirm("确定提交吗?")) {
+					 	$.ajax({
+					 		type:"post",
+					 		url:"/feedback.php",
+					 		async:true,
+					 		data:{
+					 			info_na:name,
+					 			info_te:tel,
+					 			info_sn:sn,
+					 			info_em:email,
+					 			info_in:info,
+					 			info_ot:other
+					 		},
+					 		success:function (e) {
+					 			if (e=="1") {
+					 				alert("提交成功!");
+					 				location.reload();
+					 			}else{
+					 				alert("提交失败,请稍后再试!");
+					 			}
+					 		},
+					 		error:function (e) {
+					 			alert("网络连接失败!");
+					 		}
+					 	});
+					 }
+				}else{
+					alert("请将信息填写完整后重试！");
+				}
+				
+			}
+			
+			function fwFun () {
+				var sn = $("#fwsn").val();
+				if (sn!="") {
+					$.ajax({
+						type:"get",
+						url:"/index.php?m=excel&c=ajax",
+						async:true,
+						dataType:"json",
+						data:{
+							d:sn
+						},
+						success:function (e) {
+							if (e == 1) {
+								alert("没有查询到此琴号信息,请联系您的经销商");
+							} else if(e == 2){
+								alert("琴号输入错误!");
+							}else{
+								$("#resultShow").html("<p id='guitarInfo'>吉他琴号:"+e['order_num']+"吉他型号:"+e['GuitarType']+"<br />吉他颜色:"+e['GuitarColor']+"出厂日期:"+e['ReleaseDate']+"<br />您的吉他为原装正品!</p>");
+							}
+						}
+					});
+				} else{
+					alert("请填写产品序列号!");
+				}
+			}
+			
+		</script>
+	</body>
+</html>
